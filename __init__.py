@@ -1,6 +1,5 @@
-# __init__.py
 # -*- coding: utf-8 -*-
-# uTalk
+# __init__.py
 # Copyright (C) 2025 Chai Chaimee
 # Licensed under GNU General Public License. See COPYING.txt for details.
 
@@ -48,6 +47,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
         # Removed _update_speech_language() call because speech.setLanguage is not available
 
         try:
+            logHandler.log.info(f"uTalk: Loading settingsPanel from {settingsPanel.__file__}")
             NVDASettingsDialog.categoryClasses.append(settingsPanel.uTalkSettingsPanel)
         except Exception as e:
             logHandler.log.error(f"Failed to register settings panel: {e}")
@@ -103,7 +103,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
                 logHandler.log.info("uTalk: No makeTextInfo available")
 
         except Exception as e_info:
-            logHandler.log.error(f"uTalk: makeTextInfo error: {str(e_info)}")
+            logHandler.log.debug(f"uTalk: makeTextInfo error: {str(e_info)}")
 
         logHandler.log.info("uTalk: Attempting Ctrl+C fallback")
         original_clipboard_data = ""
@@ -124,7 +124,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
                 return selected_text.replace('\r\n', '\n').replace('\r', '\n').strip()
 
         except Exception as e_fallback:
-            logHandler.log.error(f"uTalk: Ctrl+C fallback failed: {str(e_fallback)}")
+            logHandler.log.debug(f"uTalk: Ctrl+C fallback failed: {str(e_fallback)}")
         finally:
             try:
                 with winUser.openClipboard(gui.mainFrame.Handle):
@@ -132,7 +132,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
                     if original_clipboard_data:
                         winUser.setClipboardData(winUser.CF_UNICODETEXT, original_clipboard_data)
             except Exception as e_restore:
-                logHandler.log.error(f"uTalk: Clipboard restore failed: {str(e_restore)}")
+                logHandler.log.debug(f"uTalk: Clipboard restore failed: {str(e_restore)}")
 
         logHandler.log.info("uTalk: No selected text found")
         return None
@@ -148,8 +148,6 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
     def _get_message(self, key):
         default = uconfig.DEFAULT_CONFIG.get(key, "")
         return self.config.get(f"{key}_alt", default) if self.use_alternate_language else default
-
-    # Removed _update_speech_language function because speech.setLanguage is not available
 
     def script_announceCopy(self, gesture):
         try:
@@ -173,8 +171,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
                 self._speak_word(self._get_message("copy"))
 
         except Exception as e:
-            logHandler.log.error(f"Copy error: {e}")
-            self._speak_word(self._get_message("clipboardError")) # Assuming you have a 'clipboardError' key in your config
+            logHandler.log.debug(f"Copy error: {e}")
+
     script_announceCopy.__doc__ = _("copy")
 
     def script_announcePaste(self, gesture):
@@ -222,8 +220,6 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
         self.config["last_used_language"] = self.use_alternate_language
         logHandler.log.info(f"uTalk: script_toggleLanguage: self.config after toggle logic (before save): {self.config}")
         uconfig.saveConfig(self.config)
-        
-        # Removed _update_speech_language() call because speech.setLanguage is not available
         
         lang_to_speak = self.config.get("language_alt", "Alternate") if self.use_alternate_language else "English"
         self._speak_word(lang_to_speak)
