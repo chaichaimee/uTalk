@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # settingsPanel.py
 # Copyright (C) 2025 Chai Chaimee
 # Licensed under GNU General Public License. See COPYING.txt for details.

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # __init__.py
 # Copyright (C) 2025 Chai Chaimee
 # Licensed under GNU General Public License. See COPYING.txt for details.
@@ -20,7 +19,6 @@ import keyboardHandler
 from gui.settingsDialogs import NVDASettingsDialog
 from . import config as uconfig
 from . import settingsPanel
-from . import clipboard
 import tones
 import controlTypes
 
@@ -41,7 +39,6 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
         self.config.update(loaded_config) # Overlay with anything loaded from file
 
         self.use_alternate_language = self.config.get("last_used_language", False)
-        self.clipboard_monitor = clipboard.ClipboardMonitor()
         
         self._register_gestures_separately()
         # Removed _update_speech_language() call because speech.setLanguage is not available
@@ -108,31 +105,45 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
         logHandler.log.info("uTalk: Attempting Ctrl+C fallback")
         original_clipboard_data = ""
         try:
-            with winUser.openClipboard(gui.mainFrame.Handle):
-                original_clipboard_data = winUser.getClipboardData(winUser.CF_UNICODETEXT) or ""
-                winUser.emptyClipboard()
+            # ใช้วิธีใหม่ในการจัดการ clipboard โดยไม่ใช้ context manager
+            # เพื่อหลีกเลี่ยงข้อผิดพลาด WinError 0
+            if winUser.openClipboard(gui.mainFrame.Handle):
+                try:
+                    original_clipboard_data = winUser.getClipboardData(winUser.CF_UNICODETEXT) or ""
+                    winUser.emptyClipboard()
+                finally:
+                    winUser.closeClipboard()
                 
             keyboardHandler.injectKey("control+c") # Use injectKey for reliable simulation
             time.sleep(0.1) # Give system a moment to process the paste
             
-            with winUser.openClipboard(gui.mainFrame.Handle):
-                clipboard_text = winUser.getClipboardData(winUser.CF_UNICODETEXT) or ""
-            
-            if clipboard_text:
-                selected_text = clipboard_text
-                logHandler.log.info("uTalk: Retrieved text via Ctrl+C fallback")
-                return selected_text.replace('\r\n', '\n').replace('\r', '\n').strip()
+            # ดึงข้อมูลจาก clipboard ใหม่
+            if winUser.openClipboard(gui.mainFrame.Handle):
+                try:
+                    clipboard_text = winUser.getClipboardData(winUser.CF_UNICODETEXT) or ""
+                    if clipboard_text:
+                        selected_text = clipboard_text
+                        logHandler.log.info("uTalk: Retrieved text via Ctrl+C fallback")
+                        return selected_text.replace('\r\n', '\n').replace('\r', '\n').strip()
+                finally:
+                    winUser.closeClipboard()
 
         except Exception as e_fallback:
-            logHandler.log.debug(f"uTalk: Ctrl+C fallback failed: {str(e_fallback)}")
+            # ไม่แจ้งผู้ใช้เกี่ยวกับข้อผิดพลาด
+            pass
         finally:
             try:
-                with winUser.openClipboard(gui.mainFrame.Handle):
-                    winUser.emptyClipboard()
-                    if original_clipboard_data:
-                        winUser.setClipboardData(winUser.CF_UNICODETEXT, original_clipboard_data)
+                # คืนค่า clipboard เดิม
+                if winUser.openClipboard(gui.mainFrame.Handle):
+                    try:
+                        winUser.emptyClipboard()
+                        if original_clipboard_data:
+                            winUser.setClipboardData(winUser.CF_UNICODETEXT, original_clipboard_data)
+                    finally:
+                        winUser.closeClipboard()
             except Exception as e_restore:
-                logHandler.log.debug(f"uTalk: Clipboard restore failed: {str(e_restore)}")
+                # ไม่แจ้งผู้ใช้เกี่ยวกับข้อผิดพลาด
+                pass
 
         logHandler.log.info("uTalk: No selected text found")
         return None
@@ -143,7 +154,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
                 word = word.strip()
                 speech.speak([word], priority=speech.Spri.NORMAL)
         except Exception as e:
-            logHandler.log.error(f"Speech error: {e}")
+            # ไม่แจ้งผู้ใช้เกี่ยวกับข้อผิดพลาด
+            pass
 
     def _get_message(self, key):
         default = uconfig.DEFAULT_CONFIG.get(key, "")
@@ -171,7 +183,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
                 self._speak_word(self._get_message("copy"))
 
         except Exception as e:
-            logHandler.log.debug(f"Copy error: {e}")
+            # ไม่แจ้งผู้ใช้เกี่ยวกับข้อผิดพลาด
+            pass
 
     script_announceCopy.__doc__ = _("copy")
 
