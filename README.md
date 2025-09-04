@@ -1,4 +1,8 @@
-<div align="center"># uTalk</div>
+<div align="center">
+
+# uTalk
+
+</div>
 
 
 Monitors clipboard content and announces actions (copy, cut, paste, etc.) in either English or an alternate language (configurable).
@@ -46,4 +50,27 @@ Hear clipboard operation confirmations in your preferred language with easy togg
 
 2. Select **uTalk** category from the list.  
 
-3. In **"Language code for**
+3. In **"Language code for alternate commands"** field, enter your preferred language code (e.g., `"th"` for Thai, `"es"` for Spanish).  
+
+4. In uTalk settings, locate the command you want to customize.  
+
+5. Enter your preferred announcement in the text field for:  
+
+   - Copy  
+   - Copy as path  
+   - Copy file  
+   - Cut  
+   - Paste  
+   - Save  
+   - Select all  
+   - Undo  
+   - Redo  
+
+6. Click **OK** to save your custom messages.  
+
+
+## Note
+
+Language toggling (**NVDA+Alt+T**) works immediately after changing settings.  
+
+The alternate language uses your custom messages if configured, or the language code you provided.  
