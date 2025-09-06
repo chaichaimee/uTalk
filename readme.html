@@ -1,442 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>uTalk Documentation</title>
-    <style>
-        :root {
-            --primary: #2a579a;
-            --secondary: #3c7dbb;
-            --light: #f0f7ff;
-            --dark: #1a365d;
-            --border: #cbd5e0;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #fff;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 30px 20px;
-            border-radius: 8px 8px 0 0;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
-        h2 {
-            color: var(--primary);
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 8px;
-            margin: 30px 0 20px;
-            font-size: 1.8rem;
-        }
-        
-        h3 {
-            color: var(--secondary);
-            margin: 25px 0 15px;
-            font-size: 1.4rem;
-        }
-        
-        .summary {
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin-bottom: 10px;
-        }
-        
-        .author {
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-        
-        section {
-            background-color: var(--light);
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background-color: white;
-        }
-        
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        th {
-            background-color: var(--primary);
-            color: white;
-            font-weight: 600;
-        }
-        
-        tr:nth-child(even) {
-            background-color: #f8fafc;
-        }
-        
-        tr:hover {
-            background-color: #ebf4ff;
-        }
-        
-        ul, ol {
-            padding-left: 25px;
-            margin: 15px 0;
-        }
-        
-        li {
-            margin-bottom: 10px;
-        }
-        
-        .keyboard-key {
-            display: inline-block;
-            padding: 3px 8px;
-            background: linear-gradient(to bottom, #f7f7f7, #e7e7e7);
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-            font-family: monospace;
-            font-size: 0.9em;
-            color: #333;
-        }
-        
-        .note {
-            background-color: #e6f7ff;
-            border-left: 4px solid var(--secondary);
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 4px 4px 0;
-        }
-        
-        .code {
-            font-family: monospace;
-            background-color: #f8f8f8;
-            padding: 2px 6px;
-            border-radius: 4px;
-            border: 1px solid #e2e8f0;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #666;
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border);
-            margin-top: 30px;
-        }
-        
-        a {
-            color: var(--secondary);
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-        
-        .feature-card {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--secondary);
-        }
-        
-        .feature-card h4 {
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        
-        .version-info {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-top: 10px;
-        }
-        
-        .version-item {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            flex: 1;
-            min-width: 200px;
-            margin: 0 10px 10px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        
-        @media (max-width: 768px) {
-            body {
-                padding: 15px;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            section {
-                padding: 20px 15px;
-            }
-            
-            .version-info {
-                flex-direction: column;
-            }
-            
-            .version-item {
-                margin: 0 0 15px 0;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>uTalk Add-on</title>
 </head>
 <body>
-    <header>
-        <h1>uTalk</h1>
-        <div class="summary">Enhanced Clipboard Experience for NVDA</div>
-        <div class="author">by Chai Chaimee</div>
-        <div>Version 2025.2</div>
-    </header>
 
-    <section id="overview">
-        <h2>Overview</h2>
-        <p>uTalk enhances your clipboard experience by monitoring clipboard content, maintaining a history, and announcing actions in multiple languages. With uTalk, you'll receive audible confirmation of clipboard operations and can easily switch between languages.</p>
-        
-        <div class="note">
-            <strong>Note:</strong> uTalk requires NVDA 2022.4 or newer. Last tested with NVDA 2025.1.
-        </div>
-    </section>
+<h1>uTalk Add-on</h1>
+<br>
 
-    <section id="features">
-        <h2>Key Features</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h4>Multilingual Announcements</h4>
-                <p>Hear clipboard operation confirmations in your preferred language with easy toggling between languages.</p>
-            </div>
-            <div class="feature-card">
-                <h4>Smart Application Handling</h4>
-                <p>Different behaviors for File Explorer, web browsers, and text editors ensure optimal clipboard operations.</p>
-            </div>
-            <div class="feature-card">
-                <h4>Customizable Messages</h4>
-                <p>Tailor each announcement to your preference in the settings panel.</p>
-            </div>
-            <div class="feature-card">
-                <h4>Persistent Settings</h4>
-                <p>Your language preferences and custom messages are saved between sessions.</p>
-            </div>
-        </div>
-    </section>
+<p>uTalk is an NVDA add-on that provides customizable spoken feedback for common clipboard and file operations.</p>
+<br>
+<p><strong>Author:</strong> Chai Chaimee</p>
+<p><strong>URL:</strong> <a href="https://github.com/chaichaimee/uTalk">https://github.com/chaichaimee/uTalk</a></p>
+<br><br>
 
-    <section id="keyboard-commands">
-        <h2>Keyboard Commands</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Command</th>
-                    <th>Function</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><span class="keyboard-key">Ctrl</span> + <span class="keyboard-key">C</span></td>
-                    <td>Copy</td>
-                    <td>Copies selected content with announcement</td>
-                </tr>
-                <tr>
-                    <td><span class="keyboard-key">Ctrl</span> + <span class="keyboard-key">V</span></td>
-                    <td>Paste</td>
-                    <td>Pastes clipboard content with announcement</td>
-                </tr>
-                <tr>
-                    <td><span class="keyboard-key">Ctrl</span> + <span class="keyboard-key">X</span></td>
-                    <td>Cut</td>
-                    <td>Cuts selected content with announcement</td>
-                </tr>
-                <tr>
-                    <td><span class="keyboard-key">Ctrl</span> + <span class="keyboard-key">Z</span></td>
-                    <td>Undo</td>
-                    <td>Undoes last action with announcement</td>
-                </tr>
-                <tr>
-                    <td><span class="keyboard-key">Ctrl</span> + <span class="keyboard-key">A</span></td>
-                    <td>Select All</td>
-                    <td>Selects all content with announcement</td>
-                </tr>
-                <tr>
-                    <td><span class="keyboard-key">Ctrl</span> + <span class="keyboard-key">S</span></td>
-                    <td>Save</td>
-                    <td>Saves document with announcement</td>
-                </tr>
-                <tr>
-                    <td><span class="keyboard-key">Ctrl</span> + <span class="keyboard-key">Shift</span> + <span class="keyboard-key">C</span></td>
-                    <td>Copy As Path</td>
-                    <td>Copies file path with announcement (File Explorer)</td>
-                </tr>
-                <tr>
-                    <td><span class="keyboard-key">Ctrl</span> + <span class="keyboard-key">Alt</span> + <span class="keyboard-key">C</span></td>
-                    <td>Copy File</td>
-                    <td>Copies file with announcement</td>
-                </tr>
-                <tr>
-                    <td><span class="keyboard-key">NVDA</span> + <span class="keyboard-key">Alt</span> + <span class="keyboard-key">T</span></td>
-                    <td>Toggle Language</td>
-                    <td>Switches between primary and alternate language</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+<h2>Features</h2>
+  <li>Announces actions such as Copy, Paste, Cut, Save, Select All, Undo</li>
+  <li>Supports switching between English and Thai speech with NVDA+Alt+T</li>
+  <li>Works in text editors, word processors, and Windows Explorer</li>
+</ul>
+<br>
 
-    <section id="getting-started">
-        <h2>Getting Started</h2>
-        <p>uTalk works immediately after installation with sensible defaults. Follow these steps to begin:</p>
-        
-        <ol>
-            <li>Install uTalk through NVDA's add-on manager (NVDA Menu → Tools → Manage Add-ons)</li>
-            <li>After installation, you'll hear "uTalk loaded" confirmation</li>
-            <li>Use standard clipboard commands (<span class="keyboard-key">Ctrl</span>+<span class="keyboard-key">C</span>, <span class="keyboard-key">Ctrl</span>+<span class="keyboard-key">V</span>, etc.) as you normally would</li>
-            <li>uTalk will announce each action in your current language setting</li>
-            <li>Press <span class="keyboard-key">NVDA</span>+<span class="keyboard-key">Alt</span>+<span class="keyboard-key">T</span> to toggle between languages</li>
-        </ol>
-        
-        <div class="note">
-            <strong>Tip:</strong> uTalk intelligently handles different applications:
-            <ul>
-                <li>In web browsers, it ensures proper text copying</li>
-                <li>In File Explorer, it announces "copy file" when copying files</li>
-                <li>In text editors, it uses standard clipboard announcements</li>
-            </ul>
-        </div>
-    </section>
+<h2>Usage</h2>
+<p>Use standard keyboard shortcuts (Ctrl+C, Ctrl+V, etc.). uTalk will speak the action performed.</p>
+<h2>Settings Panel</h2>
+<p>Open the uTalk settings panel to configure spoken messages for:</p>
+<ul>
+<br>  
 
-    <section id="customization">
-        <h2>Customization</h2>
-        <p>uTalk offers extensive customization options to tailor your experience:</p>
-        
-        <h3>Language Settings</h3>
-        <p>Configure your preferred alternate language:</p>
-        <ol>
-            <li>Open NVDA Menu → Preferences → Settings</li>
-            <li>Select uTalk category from the list</li>
-            <li>In "Language code for alternate commands" field, enter your preferred language code (e.g., "th" for Thai, "es" for Spanish)</li>
-            <li>Click OK to save your settings</li>
-        </ol>
-        
-        <h3>Custom Messages</h3>
-        <p>Personalize each announcement in your alternate language:</p>
-        <ol>
-            <li>In uTalk settings, locate the command you want to customize</li>
-            <li>Enter your preferred announcement in the text field:
-                <ul>
-                    <li>Copy</li>
-                    <li>Copy as path</li>
-                    <li>Copy file</li>
-                    <li>Cut</li>
-                    <li>Paste</li>
-                    <li>Save</li>
-                    <li>Select all</li>
-                    <li>Undo</li>
-                </ul>
-            </li>
-            <li>Click OK to save your custom messages</li>
-        </ol>
-        
-        <h3>Reset to Defaults</h3>
-        <p>If needed, you can restore original settings:</p>
-        <ol>
-            <li>In uTalk settings, click the "Restore Defaults" button</li>
-            <li>All custom messages and language settings will be reset</li>
-            <li>Click OK to apply the reset</li>
-        </ol>
-        
-        <div class="note">
-            <strong>Note:</strong> Language toggling (NVDA+Alt+T) works immediately after changing settings. 
-            The alternate language uses your custom messages if configured, or the language code you provided.
-        </div>
-    </section>
+<li>Language</li>
+  <li>Copy</li>
+  <li>Copy as Path</li>
+  <li>Copy File</li>
+  <li>Cut</li>
+  <li>Paste</li>
+  <li>Save</li>
+  <li>Select All</li>
+  <li>Undo</li>
+<li>Redo</li>
+</ul>
+<br>
 
-    <section id="troubleshooting">
-        <h2>Troubleshooting</h2>
-        <p>If you encounter issues with uTalk:</p>
-        
-        <ul>
-            <li><strong>Verify NVDA version:</strong> Ensure you're using NVDA 2022.4 or newer</li>
-            <li><strong>Check conflicts:</strong> Temporarily disable other clipboard-related add-ons</li>
-            <li><strong>Reset settings:</strong> Try restoring default settings in uTalk configuration</li>
-            <li><strong>Review logs:</strong> Check the NVDA log (NVDA Menu → Tools → View Log) for error messages</li>
-            <li><strong>Reinstall:</strong> Try uninstalling and reinstalling the add-on</li>
-        </ul>
-        
-        <p>Common issues and solutions:</p>
-        <ul>
-            <li><strong>No announcements:</strong> Check if uTalk is enabled in the add-on manager</li>
-            <li><strong>Language not changing:</strong> Verify you entered a valid language code in settings</li>
-            <li><strong>Clipboard issues in browsers:</strong> Ensure you have the latest version of uTalk</li>
-        </ul>
-    </section>
+<p>All settings are saved in a JSON file inside the NVDA user configuration folder and reloaded automatically.</p>
+<br>
 
-    <section id="support">
-        <h2>Support & Contribution</h2>
-        <p>uTalk is an open-source project. For support, feature requests, or to contribute:</p>
-        
-        <ul>
-            <li><strong>GitHub Repository:</strong> <a href="https://github.com/chaichaimee/uTalk" target="_blank">https://github.com/chaichaimee/uTalk</a></li>
-            <li><strong>Issue Tracking:</strong> Report bugs or request features through GitHub Issues</li>
-            <li><strong>Contribution:</strong> Pull requests are welcome for improvements and translations</li>
-        </ul>
-    </section>
+<h2>Installation</h2>
+<ol>
+  <li>Download the latest release of the add-on.</li>
+  <li>In NVDA, open Tools → Manage Add-ons → Install.</li>
+  <li>Browse to the downloaded file and confirm installation.</li>
+  <li>Restart NVDA to activate uTalk.</li>
+</ol>
+<br>
 
-    <section id="version">
-        <h2>Version Information</h2>
-        <div class="version-info">
-            <div class="version-item">
-                <strong>Current Version:</strong> 2025.2
-            </div>
-            <div class="version-item">
-                <strong>Minimum NVDA Version:</strong> 2022.4
-            </div>
-            <div class="version-item">
-                <strong>Last Tested NVDA Version:</strong> 2025.1
-            </div>
-            <div class="version-item">
-                <strong>Release Date:</strong> February 2025
-            </div>
-        </div>
-    </section>
 
-    <footer>
-        <p>uTalk Add-on | Developed by Chai Chaimee | Licensed under GNU General Public License</p>
-        <p>Documentation generated on: July 9, 2025</p>
-    </footer>
+<p>This add-on is released under the GPL license.</p>
+<br>
+
 </body>
 </html>
+

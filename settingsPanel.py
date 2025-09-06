@@ -1,6 +1,4 @@
 # settingsPanel.py
-# Copyright (C) 2025 Chai Chaimee
-# Licensed under GNU General Public License. See COPYING.txt for details.
 
 import wx
 from gui import guiHelper
@@ -32,6 +30,7 @@ class uTalkSettingsPanel(SettingsPanel):
             ("copyFile", _("Copy file")),
             ("cut", _("Cut")),
             ("paste", _("Paste")),
+            ("redo", _("Redo")), # Add redo to commands list
             ("save", _("Save")),
             ("selectAll", _("Select all")),
             ("undo", _("Undo"))

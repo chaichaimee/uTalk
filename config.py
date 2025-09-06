@@ -1,6 +1,4 @@
 # config.py
-# Copyright (C) 2025 Chai Chaimee
-# Licensed under GNU General Public License. See COPYING.txt for details.
 
 import json
 import os
@@ -24,6 +22,8 @@ DEFAULT_CONFIG = {
     "cut_alt": "",
     "paste": "paste",
     "paste_alt": "",
+    "redo": "redo", # Add redo default config
+    "redo_alt": "", # Add redo alternate config
     "save": "save",
     "save_alt": "",
     "selectAll": "select all",

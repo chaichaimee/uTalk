@@ -57,6 +57,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
             ("kb:control+v", "announcePaste"),
             ("kb:control+x", "announceCut"),
             ("kb:control+z", "announceUndo"),
+            ("kb:control+y", "announceRedo"), # Add redo gesture with Ctrl+Y
+            ("kb:control+shift+z", "announceRedo"), # Add redo gesture with Ctrl+Shift+Z
             ("kb:control+a", "announceSelectAll"),
             ("kb:control+s", "announceSave"),
             ("kb:control+shift+c", "announceCopyAsPath"),
@@ -105,8 +107,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
         logHandler.log.info("uTalk: Attempting Ctrl+C fallback")
         original_clipboard_data = ""
         try:
-            # ใช้วิธีใหม่ในการจัดการ clipboard โดยไม่ใช้ context manager
-            # เพื่อหลีกเลี่ยงข้อผิดพลาด WinError 0
+            # New way to manage clipboard without context manager
+            # to avoid WinError 0 issues
             if winUser.openClipboard(gui.mainFrame.Handle):
                 try:
                     original_clipboard_data = winUser.getClipboardData(winUser.CF_UNICODETEXT) or ""
@@ -117,7 +119,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
             keyboardHandler.injectKey("control+c") # Use injectKey for reliable simulation
             time.sleep(0.1) # Give system a moment to process the paste
             
-            # ดึงข้อมูลจาก clipboard ใหม่
+            # Retrieve data from new clipboard
             if winUser.openClipboard(gui.mainFrame.Handle):
                 try:
                     clipboard_text = winUser.getClipboardData(winUser.CF_UNICODETEXT) or ""
@@ -129,11 +131,11 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
                     winUser.closeClipboard()
 
         except Exception as e_fallback:
-            # ไม่แจ้งผู้ใช้เกี่ยวกับข้อผิดพลาด
+            # Don't notify the user about the error
             pass
         finally:
             try:
-                # คืนค่า clipboard เดิม
+                # Restore the original clipboard
                 if winUser.openClipboard(gui.mainFrame.Handle):
                     try:
                         winUser.emptyClipboard()
@@ -142,7 +144,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
                     finally:
                         winUser.closeClipboard()
             except Exception as e_restore:
-                # ไม่แจ้งผู้ใช้เกี่ยวกับข้อผิดพลาด
+                # Don't notify the user about the error
                 pass
 
         logHandler.log.info("uTalk: No selected text found")
@@ -154,7 +156,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
                 word = word.strip()
                 speech.speak([word], priority=speech.Spri.NORMAL)
         except Exception as e:
-            # ไม่แจ้งผู้ใช้เกี่ยวกับข้อผิดพลาด
+            # Don't notify the user about the error
             pass
 
     def _get_message(self, key):
@@ -183,7 +185,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
                 self._speak_word(self._get_message("copy"))
 
         except Exception as e:
-            # ไม่แจ้งผู้ใช้เกี่ยวกับข้อผิดพลาด
+            # Don't notify the user about the error
             pass
 
     script_announceCopy.__doc__ = _("copy")
@@ -202,6 +204,11 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
         self._speak_word(self._get_message("undo"))
         gesture.send()
     script_announceUndo.__doc__ = _("undo")
+
+    def script_announceRedo(self, gesture):
+        self._speak_word(self._get_message("redo"))
+        gesture.send()
+    script_announceRedo.__doc__ = _("redo")
 
     def script_announceSelectAll(self, gesture):
         self._speak_word(self._get_message("selectAll"))
