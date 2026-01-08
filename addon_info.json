@@ -1,10 +1,10 @@
 ﻿{
   "addon_name": "uTalk",
   "addon_description": "Monitors clipboard content and announces actions (copy, cut, paste, etc.) in either English or an alternate language (configurable)",
-  "addon_version": "2026.1",
+  "addon_version": "2026.1.2",
   "addon_author": "chaichaimee",
   "addon_url": "https://github.com/chaichaimee/uTalk",
-  "addon_download_url": "https://github.com/chaichaimee/uTalk/releases/download/v2026.1/uTalk-v2026.1.nvda-addon",
+  "addon_download_url": "https://github.com/chaichaimee/uTalk/releases/download/v2026.1.2/uTalk-v2026.1.2.nvda-addon",
   "addon_min_nvda_version": "2022.4"
 }
 
