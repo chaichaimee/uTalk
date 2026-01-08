@@ -29,14 +29,14 @@ This add-on is released under the GPL license.
 
 ## Hot Keys
 
-**NVDA+Alt+T:** Switch between English and Thai speech
+**NVDA+Alt+T:** Switch between user languages (e.g., English, Thai, etc.)
 
 <br>
 
 ## Features
 
 * Announces actions such as Copy, Paste, Cut, Save, Select All, Undo
-* Supports switching between English and Thai speech with NVDA+Alt+T
+* Supports switching between user languages with NVDA+Alt+T
 * Works in text editors, word processors, and Windows Explorer
 * Settings panel to configure spoken messages for:
   * Language
