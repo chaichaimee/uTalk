@@ -1,6 +1,7 @@
 # settingsPanel.py
 
 import wx
+import sys
 from gui import guiHelper
 from gui.settingsDialogs import SettingsPanel
 from . import config as uconfig
@@ -56,6 +57,16 @@ class uTalkSettingsPanel(SettingsPanel):
         self.lang_field.SetValue(uconfig.DEFAULT_CONFIG.get("language_alt", ""))
         for key, ctrl in self.alt_controls.items():
             ctrl.SetValue(uconfig.DEFAULT_CONFIG.get(f"{key}_alt", ""))
+
+    def get_plugin_instance(self):
+        """Get the plugin instance from the module"""
+        try:
+            # Import the module that contains the plugin
+            module = sys.modules['globalPlugins.uTalk']
+            # Get the module-level variable
+            return getattr(module, '_utalk_plugin', None)
+        except (KeyError, AttributeError):
+            return None
     
     def onSave(self):
         new_config = {}
@@ -72,22 +83,29 @@ class uTalkSettingsPanel(SettingsPanel):
             new_config[f"{key}_alt"] = value
             logHandler.log.info(f"uTalk: SettingsPanel: Retrieved {key}_alt: '{value}'")
         
-        # Handle 'last_used_language' based on whether an alternate language code is set
-        new_config["last_used_language"] = bool(new_config["language_alt"].strip())
+        # Get the current plugin instance
+        plugin_instance = self.get_plugin_instance()
+        if plugin_instance:
+            # Preserve the current language setting from the running plugin
+            new_config["last_used_language"] = plugin_instance.use_alternate_language
+            logHandler.log.info(f"uTalk: SettingsPanel: Preserving last_used_language: {new_config['last_used_language']}")
+        else:
+            # If plugin instance not found, set based on whether language code is set
+            new_config["last_used_language"] = bool(new_config["language_alt"].strip())
+            logHandler.log.warning("uTalk: Plugin instance not found, using language_alt to determine last_used_language")
         
-        # Save the new_config
+        # Save the new_config to file
         if uconfig.saveConfig(new_config):
-            logHandler.log.info("uTalk: Settings saved successfully.")
+            logHandler.log.info("uTalk: Settings saved to file successfully.")
             
-            # Import main_plugin here to avoid circular dependency
-            from . import __init__ as main_plugin
-            if hasattr(main_plugin, 'GlobalPlugin'):
-                # Update the running plugin's config data
-                main_plugin.GlobalPlugin.config = new_config
-                main_plugin.GlobalPlugin.use_alternate_language = new_config["last_used_language"]
+            # Update the running plugin's config data immediately
+            if plugin_instance:
+                # Update configuration directly without reloading from file
+                plugin_instance.update_config(new_config)
                 
                 # Speak the selected language immediately after saving settings
-                lang = new_config.get("language_alt", "Alternate") if main_plugin.GlobalPlugin.use_alternate_language else "English"
-                main_plugin.GlobalPlugin._speak_word(lang)
+                lang = new_config.get("language_alt", "Alternate") if plugin_instance.use_alternate_language else "English"
+                plugin_instance._speak_word(lang)
+                logHandler.log.info(f"uTalk: Settings updated immediately. Current language: {lang}")
         else:
-            logHandler.log.error("uTalk: Failed to save settings.")
+            logHandler.log.error("uTalk: Failed to save settings to file.")
