@@ -1,4 +1,3 @@
-```markdown
 <p align="center">
   <img src="https://www.nvaccess.org/files/nvda/documentation/userGuide/images/nvda.ico" alt="NVDA Logo" width="120">
 </p>
@@ -64,4 +63,3 @@ This add-on is released under the GPL license.
 ---
 
 *Note: This README is formatted for GitHub using CommonMark + GitHub Flavored Markdown (GFM).*
-```

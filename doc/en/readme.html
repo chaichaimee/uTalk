@@ -1,150 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>uTalk NVDA Add-on</title>
-<style>
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    padding: 20px;
-    background-color: #f4f4f4;
-}
-.container {
-    max-width: 800px;
-    margin: auto;
-    background: #fff;
-    padding: 20px 40px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-h1, h2, h3 {
-    text-align: center;
-}
-b {
-    font-weight: bold;
-}
-.section {
-    margin-bottom: 30px;
-}
-.nvda-logo {
-    display: block;
-    margin: 0 auto 20px;
-    width: 120px;
-    height: auto;
-}
-.hotkey {
-    background: #f8f9fa;
-    border-left: 4px solid #3498db;
-    padding: 15px;
-    margin: 15px 0;
-    border-radius: 0 4px 4px 0;
-}
-.tap-explanation {
-    background: #e8f4fc;
-    padding: 15px;
-    border-radius: 5px;
-    margin: 10px 0;
-}
-.feature-item {
-    margin: 15px 0;
-    padding-left: 10px;
-}
-.note {
-    background: #fff3cd;
-    border-left: 4px solid #ffc107;
-    padding: 12px;
-    margin: 15px 0;
-    border-radius: 0 4px 4px 0;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>uTalk Add-on</title>
 </head>
 <body>
 
-<div class="container">
-
-<div class="section">
-    <img src="https://www.nvaccess.org/files/nvda/documentation/userGuide/images/nvda.ico" alt="NVDA Logo" class="nvda-logo">
-    <h1>uTalk</h1>
-
+<h1>uTalk Add-on</h1>
 <br>
 
-<p style="text-align: center;">uTalk is an NVDA add-on that provides customizable spoken feedback for common clipboard and file operations.</p>
-</div>
+<p>uTalk is an NVDA add-on that provides customizable spoken feedback for common clipboard and file operations.</p>
+<br>
+<p><strong>Author:</strong> Chai Chaimee</p>
+<p><strong>URL:</strong> <a href="https://github.com/chaichaimee/uTalk">https://github.com/chaichaimee/uTalk</a></p>
+<br><br>
 
+<h2>Features</h2>
+  <li>Announces actions such as Copy, Paste, Cut, Save, Select All, Undo</li>
+  <li>Supports switching between English and Thai speech with NVDA+Alt+T</li>
+  <li>Works in text editors, word processors, and Windows Explorer</li>
+</ul>
 <br>
 
-<div class="section">
-    <p style="text-align: center;"><b>author:</b> chai chaimee</p>
-    <p style="text-align: center;"><b>url:</b> https://github.com/chaichaimee/uTalk</p>
-</div>
-
-<hr>
-
-<div class="section">
-    <h2>Description</h2>
-    <p>uTalk is an NVDA add-on that provides customizable spoken feedback for common clipboard and file operations.</p>
-<br>
+<h2>Usage</h2>
 <p>Use standard keyboard shortcuts (Ctrl+C, Ctrl+V, etc.). uTalk will speak the action performed.</p>
+<h2>Settings Panel</h2>
+<p>Open the uTalk settings panel to configure spoken messages for:</p>
+<ul>
+<br>  
+
+<li>Language</li>
+  <li>Copy</li>
+  <li>Copy as Path</li>
+  <li>Copy File</li>
+  <li>Cut</li>
+  <li>Paste</li>
+  <li>Save</li>
+  <li>Select All</li>
+  <li>Undo</li>
+<li>Redo</li>
+</ul>
 <br>
+
+<p>All settings are saved in a JSON file inside the NVDA user configuration folder and reloaded automatically.</p>
+<br>
+
+<h2>Installation</h2>
+<ol>
+  <li>Download the latest release of the add-on.</li>
+  <li>In NVDA, open Tools → Manage Add-ons → Install.</li>
+  <li>Browse to the downloaded file and confirm installation.</li>
+  <li>Restart NVDA to activate uTalk.</li>
+</ol>
+<br>
+
+
 <p>This add-on is released under the GPL license.</p>
-</div>
-
 <br>
-
-<div class="section">
-    <h2>Hot Keys</h2>
-    <div class="hotkey">
-        <b>NVDA+Alt+T:</b> Switch between English and Thai speech
-    </div>
-</div>
-
-<br>
-
-<div class="section">
-    <h2>Features</h2>
-    <div class="feature-item">
-        <b>•</b> Announces actions such as Copy, Paste, Cut, Save, Select All, Undo
-    </div>
-    <div class="feature-item">
-        <b>•</b> Supports switching between English and Thai speech with NVDA+Alt+T
-    </div>
-    <div class="feature-item">
-        <b>•</b> Works in text editors, word processors, and Windows Explorer
-    </div>
-    <div class="feature-item">
-        <b>•</b> Settings panel to configure spoken messages for:
-        <ul>
-            <li>Language</li>
-            <li>Copy</li>
-            <li>Copy as Path</li>
-            <li>Copy File</li>
-            <li>Cut</li>
-            <li>Paste</li>
-            <li>Save</li>
-            <li>Select All</li>
-            <li>Undo</li>
-            <li>Redo</li>
-        </ul>
-    </div>
-    <div class="feature-item">
-        <b>•</b> All settings are saved in a JSON file inside the NVDA user configuration folder and reloaded automatically
-    </div>
-</div>
-
-<br>
-
-<div class="section">
-    <h2>Installation</h2>
-    <ol>
-        <li>Download the latest release of the add-on</li>
-        <li>In NVDA, open Tools → Manage Add-ons → Install</li>
-        <li>Browse to the downloaded file and confirm installation</li>
-        <li>Restart NVDA to activate uTalk</li>
-    </ol>
-</div>
-
-</div>
 
 </body>
 </html>
+
