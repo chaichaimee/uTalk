@@ -1,0 +1,105 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: uTalk 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-24 00:00+0700\n"
+"PO-Revision-Date: 2025-12-24 16:56+0700\n"
+"Last-Translator: \n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.7\n"
+
+#: __init__.py settingsPanel.py
+msgid "uTalk"
+msgstr "uTalk"
+
+#: __init__.py
+msgid "Toggle language"
+msgstr "Переключить язык"
+
+#: __init__.py
+msgid "copy"
+msgstr "копировать"
+
+#: __init__.py
+msgid "paste"
+msgstr "вставить"
+
+#: __init__.py
+msgid "cut"
+msgstr "вырезать"
+
+#: __init__.py
+msgid "undo"
+msgstr "отменить"
+
+#: __init__.py
+msgid "redo"
+msgstr "повторить"
+
+#: __init__.py
+msgid "select all"
+msgstr "выделить всё"
+
+#: __init__.py
+msgid "save"
+msgstr "сохранить"
+
+#: __init__.py
+msgid "copy as path"
+msgstr "копировать путь"
+
+#: __init__.py
+msgid "copy file"
+msgstr "копировать файл"
+
+#: settingsPanel.py
+msgid "Alternate language code:"
+msgstr "Код альтернативного языка:"
+
+#: settingsPanel.py
+msgid "Command translations:"
+msgstr "Переводы команд:"
+
+#: settingsPanel.py
+msgid "Copy"
+msgstr "Копировать"
+
+#: settingsPanel.py
+msgid "Copy path"
+msgstr "Копировать путь"
+
+#: settingsPanel.py
+msgid "Copy file"
+msgstr "Копировать файл"
+
+#: settingsPanel.py
+msgid "Cut"
+msgstr "Вырезать"
+
+#: settingsPanel.py
+msgid "Paste"
+msgstr "Вставить"
+
+#: settingsPanel.py
+msgid "Redo"
+msgstr "Повторить"
+
+#: settingsPanel.py
+msgid "Save"
+msgstr "Сохранить"
+
+#: settingsPanel.py
+msgid "Select all"
+msgstr "Выделить всё"
+
+#: settingsPanel.py
+msgid "Undo"
+msgstr "Отменить"
+
+#: settingsPanel.py
+msgid "Restore Defaults"
+msgstr "Восстановить значения по умолчанию"

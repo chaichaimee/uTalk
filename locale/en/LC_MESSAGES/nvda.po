@@ -1,0 +1,105 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: uTalk 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-24 00:00+0700\n"
+"PO-Revision-Date: 2025-12-24 16:50+0700\n"
+"Last-Translator: \n"
+"Language-Team: English\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.7\n"
+
+#: __init__.py settingsPanel.py
+msgid "uTalk"
+msgstr "uTalk"
+
+#: __init__.py
+msgid "Toggle language"
+msgstr "Toggle language"
+
+#: __init__.py
+msgid "copy"
+msgstr "copy"
+
+#: __init__.py
+msgid "paste"
+msgstr "paste"
+
+#: __init__.py
+msgid "cut"
+msgstr "cut"
+
+#: __init__.py
+msgid "undo"
+msgstr "undo"
+
+#: __init__.py
+msgid "redo"
+msgstr "redo"
+
+#: __init__.py
+msgid "select all"
+msgstr "select all"
+
+#: __init__.py
+msgid "save"
+msgstr "save"
+
+#: __init__.py
+msgid "copy as path"
+msgstr "copy as path"
+
+#: __init__.py
+msgid "copy file"
+msgstr "copy file"
+
+#: settingsPanel.py
+msgid "Alternate language code:"
+msgstr "Alternate language code:"
+
+#: settingsPanel.py
+msgid "Command translations:"
+msgstr "Command translations:"
+
+#: settingsPanel.py
+msgid "Copy"
+msgstr "Copy"
+
+#: settingsPanel.py
+msgid "Copy path"
+msgstr "Copy path"
+
+#: settingsPanel.py
+msgid "Copy file"
+msgstr "Copy file"
+
+#: settingsPanel.py
+msgid "Cut"
+msgstr "Cut"
+
+#: settingsPanel.py
+msgid "Paste"
+msgstr "Paste"
+
+#: settingsPanel.py
+msgid "Redo"
+msgstr "Redo"
+
+#: settingsPanel.py
+msgid "Save"
+msgstr "Save"
+
+#: settingsPanel.py
+msgid "Select all"
+msgstr "Select all"
+
+#: settingsPanel.py
+msgid "Undo"
+msgstr "Undo"
+
+#: settingsPanel.py
+msgid "Restore Defaults"
+msgstr "Restore Defaults"
