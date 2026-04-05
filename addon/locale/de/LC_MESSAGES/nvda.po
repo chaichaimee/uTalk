@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: uTalk 2026.4.1\n"
+"Language: de\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: settingsPanel.py:22
+msgid "Alternate language code:"
+msgstr "Alternativer Sprachcode:"
+
+#: settingsPanel.py:40
+msgid "Command translations:"
+msgstr "Befehlsübersetzungen:"
+
+#: settingsPanel.py:29
+msgid "Copy"
+msgstr "Kopieren"
+
+#: settingsPanel.py:31
+msgid "Copy file"
+msgstr "Datei kopieren"
+
+#: settingsPanel.py:30
+msgid "Copy path"
+msgstr "Pfad kopieren"
+
+#: settingsPanel.py:32
+msgid "Cut"
+msgstr "Ausschneiden"
+
+#: settingsPanel.py:33
+msgid "Paste"
+msgstr "Einfügen"
+
+#: settingsPanel.py:34
+msgid "Redo"
+msgstr "Wiederholen"
+
+#: settingsPanel.py:51
+msgid "Restore Defaults"
+msgstr "Standards wiederherstellen"
+
+#: settingsPanel.py:35
+msgid "Save"
+msgstr "Speichern"
+
+#: settingsPanel.py:36
+msgid "Select all"
+msgstr "Alles auswählen"
+
+#: __init__.py:312
+msgid "Toggle language (single tap), Open settings (double tap)"
+msgstr "Sprache umschalten (1x tippen), Einstellungen (2x tippen)"
+
+#: settingsPanel.py:37
+msgid "Undo"
+msgstr "Rückgängig"
+
+#: __init__.py:242
+msgid "copy"
+msgstr "kopieren"
+
+#: __init__.py:292
+msgid "copy as path"
+msgstr "als Pfad kopieren"
+
+#: __init__.py:310
+msgid "copy file"
+msgstr "Datei kopieren"
+
+#: __init__.py:252
+msgid "cut"
+msgstr "ausschneiden"
+
+#: __init__.py:247
+msgid "paste"
+msgstr "einfügen"
+
+#: __init__.py:262
+msgid "redo"
+msgstr "wiederholen"
+
+#: __init__.py:272
+msgid "save"
+msgstr "speichern"
+
+#: __init__.py:267
+msgid "select all"
+msgstr "alles auswählen"
+
+#: __init__.py:257
+msgid "undo"
+msgstr "rückgängig"
