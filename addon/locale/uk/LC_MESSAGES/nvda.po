@@ -1,94 +1,54 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: uTalk 2026.4.1\n"
+"Project-Id-Version: uTalk 2026.4.2\n"
 "Language: uk\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settingsPanel.py:22
+#: settingsPanel.py:21
 msgid "Alternate language code:"
 msgstr "Альтернативний код мови:"
 
-#: settingsPanel.py:40
+#: settingsPanel.py:38
 msgid "Command translations:"
 msgstr "Переклади команд:"
 
-#: settingsPanel.py:29
+#: settingsPanel.py:27
 msgid "Copy"
 msgstr "Копіювати"
 
-#: settingsPanel.py:31
+#: settingsPanel.py:29
 msgid "Copy file"
 msgstr "Копіювати файл"
 
-#: settingsPanel.py:30
+#: settingsPanel.py:28
 msgid "Copy path"
 msgstr "Копіювати шлях"
 
-#: settingsPanel.py:32
+#: settingsPanel.py:30
 msgid "Cut"
 msgstr "Вирізати"
 
-#: settingsPanel.py:33
+#: settingsPanel.py:31
 msgid "Paste"
 msgstr "Вставити"
 
-#: settingsPanel.py:34
+#: settingsPanel.py:32
 msgid "Redo"
 msgstr "Повторити"
 
-#: settingsPanel.py:51
+#: settingsPanel.py:48
 msgid "Restore Defaults"
 msgstr "Відновити налаштування за замовчуванням"
 
-#: settingsPanel.py:35
+#: settingsPanel.py:33
 msgid "Save"
 msgstr "Зберегти"
 
-#: settingsPanel.py:36
+#: settingsPanel.py:34
 msgid "Select all"
 msgstr "Виділити все"
 
-#: __init__.py:312
-msgid "Toggle language (single tap), Open settings (double tap)"
-msgstr "Змінити мову (1 нат.), Налаштування (2 нат.)"
-
-#: settingsPanel.py:37
+#: settingsPanel.py:35
 msgid "Undo"
 msgstr "Скасувати"
-
-#: __init__.py:242
-msgid "copy"
-msgstr "копіювати"
-
-#: __init__.py:292
-msgid "copy as path"
-msgstr "копіювати як шлях"
-
-#: __init__.py:310
-msgid "copy file"
-msgstr "копіювати файл"
-
-#: __init__.py:252
-msgid "cut"
-msgstr "вирізати"
-
-#: __init__.py:247
-msgid "paste"
-msgstr "вставити"
-
-#: __init__.py:262
-msgid "redo"
-msgstr "повторити"
-
-#: __init__.py:272
-msgid "save"
-msgstr "зберегти"
-
-#: __init__.py:267
-msgid "select all"
-msgstr "виділити все"
-
-#: __init__.py:257
-msgid "undo"
-msgstr "скасувати"

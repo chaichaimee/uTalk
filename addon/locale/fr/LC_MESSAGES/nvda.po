@@ -1,94 +1,54 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: uTalk 2026.4.1\n"
+"Project-Id-Version: uTalk 2026.4.2\n"
 "Language: fr\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settingsPanel.py:22
+#: settingsPanel.py:21
 msgid "Alternate language code:"
 msgstr "Code de langue alternatif :"
 
-#: settingsPanel.py:40
+#: settingsPanel.py:38
 msgid "Command translations:"
 msgstr "Traductions des commandes :"
 
-#: settingsPanel.py:29
+#: settingsPanel.py:27
 msgid "Copy"
 msgstr "Copier"
 
-#: settingsPanel.py:31
+#: settingsPanel.py:29
 msgid "Copy file"
-msgstr "Copier le fichier"
+msgstr "Copiar le fichier"
 
-#: settingsPanel.py:30
+#: settingsPanel.py:28
 msgid "Copy path"
 msgstr "Copier le chemin"
 
-#: settingsPanel.py:32
+#: settingsPanel.py:30
 msgid "Cut"
 msgstr "Couper"
 
-#: settingsPanel.py:33
+#: settingsPanel.py:31
 msgid "Paste"
 msgstr "Coller"
 
-#: settingsPanel.py:34
+#: settingsPanel.py:32
 msgid "Redo"
 msgstr "Rétablir"
 
-#: settingsPanel.py:51
+#: settingsPanel.py:48
 msgid "Restore Defaults"
 msgstr "Restaurer les paramètres par défaut"
 
-#: settingsPanel.py:35
+#: settingsPanel.py:33
 msgid "Save"
 msgstr "Enregistrer"
 
-#: settingsPanel.py:36
+#: settingsPanel.py:34
 msgid "Select all"
 msgstr "Tout sélectionner"
 
-#: __init__.py:312
-msgid "Toggle language (single tap), Open settings (double tap)"
-msgstr "Changer la langue (1 appui), Paramètres (2 appuis)"
-
-#: settingsPanel.py:37
+#: settingsPanel.py:35
 msgid "Undo"
 msgstr "Annuler"
-
-#: __init__.py:242
-msgid "copy"
-msgstr "copier"
-
-#: __init__.py:292
-msgid "copy as path"
-msgstr "copier comme chemin"
-
-#: __init__.py:310
-msgid "copy file"
-msgstr "copier le fichier"
-
-#: __init__.py:252
-msgid "cut"
-msgstr "couper"
-
-#: __init__.py:247
-msgid "paste"
-msgstr "coller"
-
-#: __init__.py:262
-msgid "redo"
-msgstr "rétablir"
-
-#: __init__.py:272
-msgid "save"
-msgstr "enregistrer"
-
-#: __init__.py:267
-msgid "select all"
-msgstr "tout sélectionner"
-
-#: __init__.py:257
-msgid "undo"
-msgstr "annuler"
