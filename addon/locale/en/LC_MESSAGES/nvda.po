@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: uTalk 2026.4.2\n"
+"Project-Id-Version: uTalk 2026.4.3\n"
 "Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
-"POT-Creation-Date: 2026-04-08 05:54+0700\n"
+"POT-Creation-Date: 2026-04-08 07:29+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: chaiBot and Malee Yamazaki\n"
 "Language-Team: English\n"
@@ -60,7 +60,7 @@ msgstr "Select all"
 msgid "Undo"
 msgstr "Undo"
 
-#: __init__.py:22
+#: __init__.py:25
 #: settingsPanel.py:14
 msgid "uTalk"
 msgstr "uTalk"

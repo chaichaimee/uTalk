@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: uTalk 2026.4.2\n"
+"Project-Id-Version: uTalk 2026.4.3\n"
 "Language: de\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"

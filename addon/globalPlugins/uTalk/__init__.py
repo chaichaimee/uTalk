@@ -10,6 +10,9 @@ import wx
 import core
 import ui
 import logHandler
+import time
+import browseMode
+import textInfos
 from gui.settingsDialogs import NVDASettingsDialog
 from . import config as uconfig
 from . import settingsPanel
@@ -33,7 +36,6 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		self._last_tap_time = 0
 		self._tap_timer = None
 		
-		# Isolated binding to reduce startup pressure
 		core.callLater(500, self._bind_gestures)
 
 		try:
@@ -65,7 +67,6 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 				pass
 
 	def _safe_speak(self, key_or_text, is_direct=False):
-		"""Execute speech in a completely separate micro-task to avoid thread locking."""
 		def task():
 			if not _utalk_plugin:
 				return
@@ -78,45 +79,145 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 				ui.message(msg.strip())
 		core.callLater(100, task)
 
+	def _get_selected_text_robust(self, obj_param):
+		"""
+		Retrieves selected text using makeTextInfo or Ctrl+C fallback.
+		Returns plain text or None.
+		"""
+		current_obj = obj_param
+		selected_text = None
+
+		try:
+			target_obj_for_text = None
+			if hasattr(current_obj, 'treeInterceptor') and isinstance(current_obj.treeInterceptor, browseMode.BrowseModeDocumentTreeInterceptor):
+				target_obj_for_text = current_obj.treeInterceptor
+			elif hasattr(current_obj, 'makeTextInfo'):
+				target_obj_for_text = current_obj
+			
+			if target_obj_for_text:
+				try:
+					info = target_obj_for_text.makeTextInfo(textInfos.POSITION_SELECTION)
+					if info and not info.isCollapsed:
+						selected_text = info.clipboardText
+						if selected_text:
+							return selected_text.replace('\r\n', '\n').replace('\r', '\n').strip()
+				except (RuntimeError, NotImplementedError):
+					pass
+		except Exception:
+			pass
+
+		# Fallback: simulate Ctrl+C and read clipboard
+		original_clipboard_data = ""
+		clipboard = None
+		try:
+			clipboard = wx.Clipboard.Get()
+			if clipboard.Open():
+				try:
+					if clipboard.IsSupported(wx.DataFormat(wx.DF_UNICODETEXT)):
+						data = wx.TextDataObject()
+						clipboard.GetData(data)
+						original_clipboard_data = data.GetText() or ""
+					clipboard.Clear()
+				finally:
+					clipboard.Close()
+				
+			keyboardHandler.injectKey("control+c")
+			time.sleep(0.05)
+			
+			if clipboard.Open():
+				try:
+					if clipboard.IsSupported(wx.DataFormat(wx.DF_UNICODETEXT)):
+						data = wx.TextDataObject()
+						clipboard.GetData(data)
+						clipboard_text = data.GetText() or ""
+						if clipboard_text:
+							selected_text = clipboard_text
+							return selected_text.replace('\r\n', '\n').replace('\r', '\n').strip()
+				finally:
+					clipboard.Close()
+		except Exception:
+			pass
+		finally:
+			try:
+				if clipboard and clipboard.Open():
+					try:
+						clipboard.Clear()
+						if original_clipboard_data:
+							data = wx.TextDataObject(original_clipboard_data)
+							clipboard.SetData(data)
+					finally:
+						clipboard.Close()
+			except Exception:
+				pass
+
+		return None
+
 	def script_announceCopy(self, gesture):
-		gesture.send()
-		self._safe_speak("copy")
+		try:
+			obj = api.getFocusObject()
+			if not obj:
+				core.callLater(0, gesture.send)
+				self._safe_speak("copy")
+				return
+
+			app_name = obj.appModule.appName.lower() if obj.appModule else ""
+			
+			# Only browsers use the plain-text fallback
+			browser_apps = {"chrome", "firefox", "edge", "msedge", "opera", "safari", "brave"}
+			
+			if app_name in browser_apps:
+				selected_text = self._get_selected_text_robust(obj)
+				if selected_text:
+					api.copyToClip(selected_text)
+					self._safe_speak("copy")
+					return
+				else:
+					# If fallback fails, pass through the original gesture
+					core.callLater(0, gesture.send)
+					self._safe_speak("copy")
+			else:
+				# For all other apps (Word, Excel, PowerPoint, Notepad, etc.) use native gesture
+				core.callLater(0, gesture.send)
+				self._safe_speak("copy")
+		except Exception:
+			core.callLater(0, gesture.send)
+			self._safe_speak("copy")
 
 	def script_announcePaste(self, gesture):
-		gesture.send()
+		core.callLater(0, gesture.send)
 		self._safe_speak("paste")
 
 	def script_announceCut(self, gesture):
-		gesture.send()
+		core.callLater(0, gesture.send)
 		self._safe_speak("cut")
 
 	def script_announceUndo(self, gesture):
-		gesture.send()
+		core.callLater(0, gesture.send)
 		self._safe_speak("undo")
 
 	def script_announceRedo(self, gesture):
-		gesture.send()
+		core.callLater(0, gesture.send)
 		self._safe_speak("redo")
 
 	def script_announceSelectAll(self, gesture):
-		gesture.send()
+		core.callLater(0, gesture.send)
 		self._safe_speak("selectAll")
 
 	def script_announceSave(self, gesture):
-		gesture.send()
+		core.callLater(0, gesture.send)
 		self._safe_speak("save")
 
 	def script_announceCopyAsPath(self, gesture):
 		obj = api.getFocusObject()
 		if obj and obj.appModule and obj.appModule.appName.lower() == "explorer":
 			self._safe_speak("copyAsPath")
-		gesture.send()
+		core.callLater(0, gesture.send)
 
 	def script_announceCopyFile(self, gesture):
 		obj = api.getFocusObject()
 		if obj and obj.appModule and obj.appModule.appName.lower() == "explorer":
 			self._safe_speak("copyFile")
-		gesture.send()
+		core.callLater(0, gesture.send)
 
 	def script_toggle_or_settings(self, gesture):
 		now = wx.GetLocalTimeMillis()

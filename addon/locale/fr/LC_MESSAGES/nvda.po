@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: uTalk 2026.4.2\n"
+"Project-Id-Version: uTalk 2026.4.3\n"
 "Language: fr\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,7 @@ msgstr "Copier"
 
 #: settingsPanel.py:29
 msgid "Copy file"
-msgstr "Copiar le fichier"
+msgstr "Copier le fichier"
 
 #: settingsPanel.py:28
 msgid "Copy path"
@@ -39,7 +39,7 @@ msgstr "Rétablir"
 
 #: settingsPanel.py:48
 msgid "Restore Defaults"
-msgstr "Restaurer les paramètres par défaut"
+msgstr "Restaurar les paramètres par défaut"
 
 #: settingsPanel.py:33
 msgid "Save"

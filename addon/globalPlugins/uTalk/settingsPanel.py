@@ -78,4 +78,4 @@ class uTalkSettingsPanel(SettingsPanel):
 			if plugin_instance:
 				plugin_instance.update_config(new_config)
 				lang = new_config.get("language_alt", "Alt") if plugin_instance.use_alternate_language else "English"
-				plugin_instance._speak(lang, is_direct=True)
+				plugin_instance._safe_speak(lang, is_direct=True)
