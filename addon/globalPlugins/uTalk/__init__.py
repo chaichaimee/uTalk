@@ -23,6 +23,20 @@ _utalk_plugin = None
 
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	scriptCategory = _("uTalk")
+	
+	__gestures = {
+		"kb:nvda+alt+t": "toggle_or_settings",
+		"kb:control+c": "announceCopy",
+		"kb:control+v": "announcePaste",
+		"kb:control+x": "announceCut",
+		"kb:control+z": "announceUndo",
+		"kb:control+y": "announceRedo",
+		"kb:control+shift+z": "announceRedo",
+		"kb:control+a": "announceSelectAll",
+		"kb:control+s": "announceSave",
+		"kb:control+shift+c": "announceCopyAsPath",
+		"kb:control+alt+c": "announceCopyFile"
+	}
 
 	def __init__(self):
 		super().__init__()
@@ -36,35 +50,11 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		self._last_tap_time = 0
 		self._tap_timer = None
 		
-		core.callLater(500, self._bind_gestures)
-
 		try:
 			if settingsPanel.uTalkSettingsPanel not in NVDASettingsDialog.categoryClasses:
 				NVDASettingsDialog.categoryClasses.append(settingsPanel.uTalkSettingsPanel)
 		except:
 			pass
-
-	def _bind_gestures(self):
-		if not _utalk_plugin:
-			return
-		gestures = [
-			("kb:NVDA+alt+t", "toggle_or_settings"),
-			("kb:control+c", "announceCopy"),
-			("kb:control+v", "announcePaste"),
-			("kb:control+x", "announceCut"),
-			("kb:control+z", "announceUndo"),
-			("kb:control+y", "announceRedo"),
-			("kb:control+shift+z", "announceRedo"),
-			("kb:control+a", "announceSelectAll"),
-			("kb:control+s", "announceSave"),
-			("kb:control+shift+c", "announceCopyAsPath"),
-			("kb:control+alt+c", "announceCopyFile")
-		]
-		for gesture, script in gestures:
-			try:
-				self.bindGesture(gesture, script)
-			except:
-				pass
 
 	def _safe_speak(self, key_or_text, is_direct=False):
 		def task():
@@ -153,6 +143,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		return None
 
 	def script_announceCopy(self, gesture):
+		"""Copies selected text to clipboard and announces the action"""
 		try:
 			obj = api.getFocusObject()
 			if not obj:
@@ -184,64 +175,84 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			self._safe_speak("copy")
 
 	def script_announcePaste(self, gesture):
+		"""Pastes content from clipboard and announces the action"""
 		core.callLater(0, gesture.send)
 		self._safe_speak("paste")
 
 	def script_announceCut(self, gesture):
+		"""Cuts selected content to clipboard and announces the action"""
 		core.callLater(0, gesture.send)
 		self._safe_speak("cut")
 
 	def script_announceUndo(self, gesture):
+		"""Undoes the last action and announces"""
 		core.callLater(0, gesture.send)
 		self._safe_speak("undo")
 
 	def script_announceRedo(self, gesture):
+		"""Redoes the last undone action and announces"""
 		core.callLater(0, gesture.send)
 		self._safe_speak("redo")
 
 	def script_announceSelectAll(self, gesture):
+		"""Selects all content and announces the action"""
 		core.callLater(0, gesture.send)
 		self._safe_speak("selectAll")
 
 	def script_announceSave(self, gesture):
+		"""Saves the current document and announces"""
 		core.callLater(0, gesture.send)
 		self._safe_speak("save")
 
 	def script_announceCopyAsPath(self, gesture):
+		"""Copies file/folder path in Explorer and announces"""
 		obj = api.getFocusObject()
 		if obj and obj.appModule and obj.appModule.appName.lower() == "explorer":
 			self._safe_speak("copyAsPath")
 		core.callLater(0, gesture.send)
 
 	def script_announceCopyFile(self, gesture):
+		"""Copies file/folder in Explorer and announces"""
 		obj = api.getFocusObject()
 		if obj and obj.appModule and obj.appModule.appName.lower() == "explorer":
 			self._safe_speak("copyFile")
 		core.callLater(0, gesture.send)
 
 	def script_toggle_or_settings(self, gesture):
-		now = wx.GetLocalTimeMillis()
-		if (now - self._last_tap_time) > 600:
-			self._tap_count = 0
-		self._tap_count += 1
-		self._last_tap_time = now
-		if self._tap_timer and self._tap_timer.IsRunning():
-			self._tap_timer.Stop()
-		self._tap_timer = wx.CallLater(500, self._handle_tap)
+		"""Toggles alternate language mode or opens settings with double-tap"""
+		logHandler.log.info("uTalk: toggle_or_settings script triggered")
+		try:
+			# Use time.time() instead of wx.GetLocalTimeMillis()
+			now = int(time.time() * 1000)  # milliseconds
+			if (now - self._last_tap_time) > 600:
+				self._tap_count = 0
+			self._tap_count += 1
+			self._last_tap_time = now
+			if self._tap_timer and self._tap_timer.IsRunning():
+				self._tap_timer.Stop()
+			self._tap_timer = core.callLater(500, self._handle_tap)
+		except Exception as e:
+			logHandler.log.error(f"uTalk: Error in toggle_or_settings: {str(e)}")
 
 	def _handle_tap(self):
+		logHandler.log.info(f"uTalk: _handle_tap called with tap_count={self._tap_count}")
 		if not _utalk_plugin:
 			return
-		if self._tap_count == 1:
-			self.use_alternate_language = not self.use_alternate_language
-			self.config["last_used_language"] = self.use_alternate_language
-			uconfig.saveConfig(self.config)
-			name = self.config.get("language_alt", "Alt") if self.use_alternate_language else "English"
-			self._safe_speak(name, is_direct=True)
-		elif self._tap_count >= 2:
-			import gui
-			core.callLater(300, gui.mainFrame.popupSettingsDialog, NVDASettingsDialog, settingsPanel.uTalkSettingsPanel)
-		self._tap_count = 0
+		try:
+			if self._tap_count == 1:
+				self.use_alternate_language = not self.use_alternate_language
+				self.config["last_used_language"] = self.use_alternate_language
+				uconfig.saveConfig(self.config)
+				name = self.config.get("language_alt", "Alt") if self.use_alternate_language else "English"
+				self._safe_speak(name, is_direct=True)
+				logHandler.log.info(f"uTalk: Language toggled to {name}")
+			elif self._tap_count >= 2:
+				import gui
+				core.callLater(300, gui.mainFrame.popupSettingsDialog, NVDASettingsDialog, settingsPanel.uTalkSettingsPanel)
+				logHandler.log.info("uTalk: Opening settings dialog")
+			self._tap_count = 0
+		except Exception as e:
+			logHandler.log.error(f"uTalk: Error in _handle_tap: {str(e)}")
 
 	def update_config(self, new_config):
 		self.config.update(new_config)

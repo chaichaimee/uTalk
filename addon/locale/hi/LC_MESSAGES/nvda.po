@@ -1,0 +1,66 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: uTalk 2026.4.4\n"
+"Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
+"POT-Creation-Date: 2026-04-11 13:45+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: chaiBot and Malee Yamazaki\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: DevOn Addon\n"
+
+#: settingsPanel.py:21
+msgid "Alternate language code:"
+msgstr "वैकल्पिक भाषा कोड:"
+
+#: settingsPanel.py:38
+msgid "Command translations:"
+msgstr "कमांड अनुवाद:"
+
+#: settingsPanel.py:27
+msgid "Copy"
+msgstr "कॉपी करें"
+
+#: settingsPanel.py:29
+msgid "Copy file"
+msgstr "फाइल कॉपी करें"
+
+#: settingsPanel.py:28
+msgid "Copy path"
+msgstr "पाथ कॉपी करें"
+
+#: settingsPanel.py:30
+msgid "Cut"
+msgstr "कट करें"
+
+#: settingsPanel.py:31
+msgid "Paste"
+msgstr "पेस्ट करें"
+
+#: settingsPanel.py:32
+msgid "Redo"
+msgstr "फिर से करें"
+
+#: settingsPanel.py:48
+msgid "Restore Defaults"
+msgstr "डिफ़ॉल्ट रीस्टोर करें"
+
+#: settingsPanel.py:33
+msgid "Save"
+msgstr "सहेजें"
+
+#: settingsPanel.py:34
+msgid "Select all"
+msgstr "सभी चुनें"
+
+#: settingsPanel.py:35
+msgid "Undo"
+msgstr "पूर्वावत करें"
+
+#: __init__.py:25
+#: settingsPanel.py:14
+msgid "uTalk"
+msgstr "uTalk"

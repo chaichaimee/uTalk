@@ -1,0 +1,66 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: uTalk 2026.4.4\n"
+"Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
+"POT-Creation-Date: 2026-04-11 13:45+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: chaiBot and Malee Yamazaki\n"
+"Language-Team: Kazakh\n"
+"Language: kk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: DevOn Addon\n"
+
+#: settingsPanel.py:21
+msgid "Alternate language code:"
+msgstr "Балама тіл коды:"
+
+#: settingsPanel.py:38
+msgid "Command translations:"
+msgstr "Командалық аудармалар:"
+
+#: settingsPanel.py:27
+msgid "Copy"
+msgstr "Көшіру"
+
+#: settingsPanel.py:29
+msgid "Copy file"
+msgstr "Файлды көшіру"
+
+#: settingsPanel.py:28
+msgid "Copy path"
+msgstr "Жолды көшіру"
+
+#: settingsPanel.py:30
+msgid "Cut"
+msgstr "Қиып алу"
+
+#: settingsPanel.py:31
+msgid "Paste"
+msgstr "Қою"
+
+#: settingsPanel.py:32
+msgid "Redo"
+msgstr "Қайталау"
+
+#: settingsPanel.py:48
+msgid "Restore Defaults"
+msgstr "Әдепкі параметрлерді қайтару"
+
+#: settingsPanel.py:33
+msgid "Save"
+msgstr "Сақтау"
+
+#: settingsPanel.py:34
+msgid "Select all"
+msgstr "Барлығын таңдаవు"
+
+#: settingsPanel.py:35
+msgid "Undo"
+msgstr "Болдырмау"
+
+#: __init__.py:25
+#: settingsPanel.py:14
+msgid "uTalk"
+msgstr "uTalk"
