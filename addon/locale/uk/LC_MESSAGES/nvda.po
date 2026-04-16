@@ -10,7 +10,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: DevOn Addon\n"
+"X-Generator: Poedit 3.9\n"
 
 #: settingsPanel.py:21
 msgid "Alternate language code:"
@@ -46,7 +46,7 @@ msgstr "Повторити"
 
 #: settingsPanel.py:48
 msgid "Restore Defaults"
-msgstr "Відновити значення за замовчуванням"
+msgstr "Відновити початкове значення"
 
 #: settingsPanel.py:33
 msgid "Save"
@@ -60,7 +60,6 @@ msgstr "Виділити все"
 msgid "Undo"
 msgstr "Скасувати"
 
-#: __init__.py:25
-#: settingsPanel.py:14
+#: __init__.py:25 settingsPanel.py:14
 msgid "uTalk"
 msgstr "uTalk"
