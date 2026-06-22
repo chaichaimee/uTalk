@@ -56,8 +56,8 @@ class uTalkSettingsPanel(SettingsPanel):
 
 	def get_plugin_instance(self):
 		try:
-			module = sys.modules['globalPlugins.uTalk']
-			return getattr(module, '_utalk_plugin', None)
+			ref = sys.modules['globalPlugins.uTalk']._utalk_plugin_ref
+			return ref() if ref else None
 		except (KeyError, AttributeError):
 			return None
 	
