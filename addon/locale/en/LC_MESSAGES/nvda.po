@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: uTalk 2026.4.3\n"
+"Project-Id-Version: uTalk 2026.9.9\n"
 "Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
-"POT-Creation-Date: 2026-04-15 15:25+0700\n"
+"POT-Creation-Date: 2026-09-08 12:19+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: chaiBot and Malee Yamazaki\n"
 "Language-Team: English\n"
@@ -12,55 +12,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: DevOn Addon\n"
 
-#: settingsPanel.py:21
+#: uTalkCore.py:31
+msgid "...truncated"
+msgstr "...truncated"
+
+#: settingsPanel.py:33
 msgid "Alternate language code:"
 msgstr "Alternate language code:"
 
-#: settingsPanel.py:38
+#: settingsPanel.py:50
 msgid "Command translations:"
 msgstr "Command translations:"
 
-#: settingsPanel.py:27
+#: settingsPanel.py:39
 msgid "Copy"
 msgstr "Copy"
 
-#: settingsPanel.py:29
+#: settingsPanel.py:41
 msgid "Copy file"
 msgstr "Copy file"
 
-#: settingsPanel.py:28
+#: settingsPanel.py:40
 msgid "Copy path"
 msgstr "Copy path"
 
-#: settingsPanel.py:30
+#: settingsPanel.py:42
 msgid "Cut"
 msgstr "Cut"
 
-#: settingsPanel.py:31
+#: settingsPanel.py:43
 msgid "Paste"
 msgstr "Paste"
 
-#: settingsPanel.py:32
+#: settingsPanel.py:44
 msgid "Redo"
 msgstr "Redo"
 
-#: settingsPanel.py:48
+#: settingsPanel.py:60
 msgid "Restore Defaults"
 msgstr "Restore Defaults"
 
-#: settingsPanel.py:33
+#: settingsPanel.py:45
 msgid "Save"
 msgstr "Save"
 
-#: settingsPanel.py:34
+#: settingsPanel.py:46
 msgid "Select all"
 msgstr "Select all"
 
-#: settingsPanel.py:35
+#: settingsPanel.py:47
 msgid "Undo"
 msgstr "Undo"
 
-#: __init__.py:25
 #: settingsPanel.py:14
+#: uTalkCore.py:36
 msgid "uTalk"
 msgstr "uTalk"

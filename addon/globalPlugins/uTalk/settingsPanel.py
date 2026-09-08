@@ -13,9 +13,21 @@ addonHandler.initTranslation()
 class uTalkSettingsPanel(SettingsPanel):
 	title = _("uTalk")
 
+	def get_plugin_instance(self):
+		try:
+			ref = sys.modules['globalPlugins.uTalk.uTalkCore']._utalk_plugin_ref
+			return ref() if ref else None
+		except (KeyError, AttributeError):
+			return None
+
 	def makeSettings(self, settingsSizer):
 		sHelper = guiHelper.BoxSizerHelper(self, sizer=settingsSizer)
-		self.configData = uconfig.loadConfig()
+		# Read the already-loaded in-memory config from the running plugin
+		# instance rather than touching disk here; makeSettings must not
+		# perform file I/O, or the Settings dialog itself can hang while
+		# opening (Section 12).
+		plugin_instance = self.get_plugin_instance()
+		self.configData = plugin_instance.config if plugin_instance else uconfig.DEFAULT_CONFIG.copy()
 		
 		self.lang_field = sHelper.addLabeledControl(
 			_("Alternate language code:"),
@@ -54,13 +66,6 @@ class uTalkSettingsPanel(SettingsPanel):
 		for key, ctrl in self.alt_controls.items():
 			ctrl.SetValue(uconfig.DEFAULT_CONFIG.get(f"{key}_alt", ""))
 
-	def get_plugin_instance(self):
-		try:
-			ref = sys.modules['globalPlugins.uTalk']._utalk_plugin_ref
-			return ref() if ref else None
-		except (KeyError, AttributeError):
-			return None
-	
 	def onSave(self):
 		new_config = {}
 		new_config["language_alt"] = self.lang_field.GetValue()

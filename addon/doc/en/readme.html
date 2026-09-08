@@ -67,86 +67,175 @@ b {
     <img src="https://www.nvaccess.org/files/nvda/documentation/userGuide/images/nvda.ico" alt="NVDA Logo" class="nvda-logo">
     <h1>uTalk</h1>
     <br>
-    <p style="text-align: center; font-size: 1.2em; color: #2c3e50;"><b>Give Your Actions a Voice: Transform Standard Alerts into Your Own Imagination</b></p>
+    <p style="text-align: center;">Hear every Copy, Paste, Cut, Undo and Save as it happens &mdash; in the words you choose.</p>
 </div>
-
 <br>
-
 <div class="section">
     <p style="text-align: center;"><b>author:</b> chai chaimee</p>
     <p style="text-align: center;"><b>url:</b> https://github.com/chaichaimee/uTalk</p>
 </div>
-
-<hr>
-
-<div class="section">
-    <h2>Beyond Standard Feedback</h2>
-    <p><b>uTalk</b> isn’t just a notification tool—it’s a bridge between your workflow and your creativity. Stop settling for generic system sounds. With uTalk, every command becomes an experience tailored to your personal preference, giving life to your clipboard and file operations like never before.</p>
-    <p>Whether you're working in a complex code editor or managing a vast directory of files, uTalk provides the auditory confirmation you need, in the language and style you choose.</p>
-</div>
-
 <br>
 
 <div class="section">
-    <h2>Hot Keys</h2>
-    <div class="hotkey">
-        <h3>NVDA+Alt+T</h3>
-        <h3>Single Tap : Instant Language Toggle</h3>
-        <h3>Double Tap : Open uTalk Setting</h3>
-        <p>Effortlessly switch between your configured user languages (e.g., English, Thai, etc.) on the fly. Adapt your environment to your current task with a single keystroke.</p>
-    </div>
+<h2>Introduction</h2>
+<br>
+<p>uTalk speaks a short confirmation every time you use a common editing shortcut &mdash; Copy, Paste, Cut, Undo, Redo, Select All, Save, Copy Path, and Copy File. Instead of wondering whether your Ctrl+C actually worked, uTalk quietly announces "copy" (or whatever word you prefer) right after the action happens.</p>
+<br>
+<p>Every announced word can be replaced with your own text, and you can even keep two full sets of announcements &mdash; for example English and your native language &mdash; and switch between them instantly with a single hotkey tap.</p>
+<br>
+<p>uTalk also pays special attention to copying selected text while browsing the web in NVDA's Browse Mode, where a normal Ctrl+C often fails silently because the selection only exists inside NVDA's virtual buffer.</p>
 </div>
-
 <br>
 
 <div class="section">
-    <h2>Premium Capabilities</h2>
-    <div class="feature-item">
-        <h3>1. Total Command Awareness</h3>
-        <p>Receive immediate, customizable spoken feedback for essential actions: <b>Copy, Paste, Cut, Save, Select All, and Undo.</b> Never second-guess if your command registered again.</p>
-    </div>
-    <div class="feature-item">
-        <h3>2. Advanced Context Monitoring</h3>
-        <p>From text editors and word processors to the depths of Windows Explorer, uTalk follows you everywhere, ensuring consistent feedback across your entire digital workspace.</p>
-    </div>
-    <div class="feature-item">
-        <h3>3. Professional Customization Panel</h3>
-        <p>Take full control of your experience. The dedicated settings panel allows you to redefine spoken messages for every major operation including <b>Copy as Path, File Operations, Redo,</b> and more.</p>
-    </div>
-    <div class="feature-item">
-        <h3>4. Intelligent Persistence</h3>
-        <p>Your configuration is your own. uTalk utilizes a robust <b>JSON-based architecture</b> to save your preferences automatically, ensuring your custom "imagination-driven" setup is ready the moment you start.</p>
-    </div>
+<h3>Hot Keys</h3>
+<br>
+<div class="hotkey">
+<b>NVDA+Alt+T</b><br>
+Single Tap : Toggle between English and your alternate language for all announcements<br>
+Double Tap : Open the uTalk Settings panel
 </div>
-
+<br>
+<div class="hotkey">
+<b>Control+C</b><br>
+Single Tap : Copy, then announce "copy" (or your custom word)
+</div>
+<br>
+<div class="hotkey">
+<b>Control+V</b><br>
+Single Tap : Paste, then announce "paste"
+</div>
+<br>
+<div class="hotkey">
+<b>Control+X</b><br>
+Single Tap : Cut, then announce "cut"
+</div>
+<br>
+<div class="hotkey">
+<b>Control+Z</b><br>
+Single Tap : Undo, then announce "undo"
+</div>
+<br>
+<div class="hotkey">
+<b>Control+Y or Control+Shift+Z</b><br>
+Single Tap : Redo, then announce "redo"
+</div>
+<br>
+<div class="hotkey">
+<b>Control+A</b><br>
+Single Tap : Select all, then announce "select all"
+</div>
+<br>
+<div class="hotkey">
+<b>Control+S</b><br>
+Single Tap : Save, then announce "save"
+</div>
+<br>
+<div class="hotkey">
+<b>Control+Shift+C</b><br>
+Single Tap : Announce "copy as path" (Windows Explorer only), then perform the shortcut
+</div>
+<br>
+<div class="hotkey">
+<b>Control+Alt+C</b><br>
+Single Tap : Announce "copy file" (Windows Explorer only), then perform the shortcut
+</div>
+<br>
+<div class="note">
+uTalk listens to these standard Windows shortcuts directly. Your shortcut always still runs as normal &mdash; uTalk only adds a spoken confirmation on top of it.
+</div>
+</div>
 <br>
 
 <div class="section">
-    <h2>Getting Started</h2>
-    <p>Experience the future of auditory feedback in three simple steps:</p>
-    <ol>
-        <li>Integrate the add-on into your NVDA environment.</li>
-        <li>Launch the settings to craft your custom voice responses.</li>
-        <li>Enjoy a truly personalized, high-efficiency workflow.</li>
-    </ol>
+<h2>Features</h2>
+
+<div class="feature-item">
+<h3>1. Spoken Confirmation for Everyday Commands</h3>
+<br>
+<p>Whenever you press Ctrl+C, Ctrl+V, Ctrl+X, Ctrl+Z, Ctrl+Y (or Ctrl+Shift+Z), Ctrl+A, or Ctrl+S, uTalk lets the keystroke through to the application first and then, shortly afterward, speaks a short word confirming what happened. By default the words are plain English: "copy", "paste", "cut", "undo", "redo", "select all", and "save".</p>
+<br>
+<p>To keep NVDA responsive, announcements are never spoken instantly on the keystroke itself &mdash; uTalk waits a fraction of a second (100 milliseconds) before speaking, so the application has time to actually finish the action first.</p>
+<br>
+<p>As a safety measure, any announced text is capped at 200 characters; if you ever configure a very long custom phrase, it will be cut short with "...truncated" added at the end so it can never overwhelm the speech output.</p>
 </div>
+
+<div class="feature-item">
+<h3>2. Smart Copy Handling in Browse Mode</h3>
+<br>
+<p>Copying text while reading a web page in NVDA's Browse Mode works differently from copying in a normal editable field, and uTalk handles both cases correctly:</p>
+<br>
+<p><b>Step by step, when you press Control+C:</b></p>
+<br>
+<p>1. uTalk checks whether your current focus is inside a Browse Mode virtual document (for example, a web page in a browser).</p>
+<br>
+<p>2. If you <b>are</b> in Browse Mode: a text selection made with Shift+Arrow keys exists only inside NVDA's own virtual buffer, not as a real selection in the browser itself. Sending the normal Ctrl+C in this situation would copy nothing at all. So instead, uTalk reads the selected text directly from NVDA's virtual buffer and places it on the clipboard itself using NVDA's own clipboard function. If no text is selected, it simply forwards your Ctrl+C as normal.</p>
+<br>
+<p>3. If you are <b>not</b> in Browse Mode (for example, typing in a text box or word processor): a real, OS-level selection already exists, so uTalk forwards your Ctrl+C to the application first, letting the application perform its own copy (this preserves any special formatting the application itself would normally copy).</p>
+<br>
+<p>4. In both cases, once the copy is done, uTalk announces "copy" (or your custom word).</p>
+</div>
+
+<div class="feature-item">
+<h3>3. Explorer-Only Announcements for Copy Path and Copy File</h3>
+<br>
+<p>Windows Explorer has two extra shortcuts that do not exist in most other programs: Copy as Path (Ctrl+Shift+C) and Copy File (Ctrl+Alt+C). uTalk checks whether the currently focused window actually belongs to Windows Explorer before announcing these two commands, so you will only hear "copy as path" or "copy file" while working in Explorer itself, never in other applications where those same key combinations might mean something else.</p>
+</div>
+
+<div class="feature-item">
+<h3>4. One Hotkey, Two Jobs: Language Toggle and Settings Access</h3>
+<br>
+<div class="tap-explanation">
+<p>NVDA+Alt+T is a single hotkey that behaves differently depending on how many times you tap it in quick succession:</p>
+<br>
+<p><b>Single Tap</b> &mdash; uTalk waits up to 500 milliseconds to see if you will tap again. If you don't, it switches your active announcement language (English or your alternate language) and immediately speaks the new language's name aloud as confirmation, then saves this choice so it is remembered the next time you start NVDA.</p>
+<br>
+<p><b>Double Tap</b> (or more) &mdash; If a second tap arrives within 600 milliseconds of the first, uTalk instead opens the NVDA Settings dialog directly to the uTalk category, so you can edit your custom phrases.</p>
+<br>
+<p>Internally, every tap resets a short timer; only once the timer expires without another tap does uTalk decide what actually happened, which is what allows one hotkey to distinguish a single tap from a double tap.</p>
+</div>
+</div>
+
+<div class="feature-item">
+<h3>5. Fully Customizable Command Phrases</h3>
+<br>
+<p>Opening the uTalk Settings panel (via NVDA's own Settings dialog, or by double-tapping NVDA+Alt+T) gives you a text field for an alternate language name, plus one text field for each command: Copy, Copy Path, Copy File, Cut, Paste, Redo, Save, Select All, and Undo. Whatever you type in these fields becomes what NVDA speaks for that command when your alternate language is active.</p>
+<br>
+<p>A "Restore Defaults" button clears every field back to blank, matching uTalk's built-in defaults.</p>
+<br>
+<p>Saving your changes updates the running add-on immediately (no restart needed) and speaks a quick confirmation in the currently active language.</p>
+<br>
+<div class="note">
+To keep the Settings dialog from ever freezing while it opens, the panel reads its current values from the add-on's in-memory settings rather than reading the configuration file from disk at that moment.
+</div>
+</div>
+
+<div class="feature-item">
+<h3>6. Reliable Settings Storage</h3>
+<br>
+<p>Your customized phrases are saved to a configuration file in your NVDA user configuration folder, inside a "ChaiChaimee" subfolder. Saving is done safely: uTalk first writes your settings to a temporary file, then swaps it into place, and finally re-reads the saved file to confirm it matches exactly what was meant to be saved &mdash; protecting your settings from being lost or corrupted if something interrupts the save.</p>
+<br>
+<p>If you have an older version of uTalk that stored its settings in a different location, uTalk automatically moves your existing settings the first time it loads, so you don't lose your customizations when updating.</p>
+</div>
+
+</div>
+
 <br><br>
-<h2>Support the project</h2>
-
-    <p>If uTalk has improved your daily browsing experience, consider supporting its continued development.</p>
-
-    <br>
-
-    <p style="text-align:center; font-size:1.1em;">
-      <strong><a href="https://github.com/chaichaimee" style="color:#0f766e; text-decoration:none;">Donate via GitHub Sponsors</a></strong>
-    </p>
-  </div>
-
+<h2>Support Me</h2>
+    <p>If this tool has made your life easier, consider fueling the next update with a small donation.</p>
+<br>
+<p>
+  <a href="https://buy.stripe.com/dRm9AU1xQ3Ds22N6VK1VK01">
+    <img src="https://img.shields.io/badge/Donate-Support%20Me-blue?style=for-the-badge&logo=stripe" alt="Support me">
+  </a>
+</p>
+<br>
+<p>Your support means the world. Let's build something great together</p>
+<br>
   <div class="footer-note">
-<p>&copy; 2026 Chai Chaimee • uTalk NVDA Add-on • Released under GNU GPL v2+</p>
-  </div>
-
+<p>&copy; 2026 Chai Chaimee NVDA Add-on Released under GNU GPL</p>
 </div>
+
+</div> <!-- End container -->
 </body>
 </html>
-

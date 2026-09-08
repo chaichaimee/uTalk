@@ -1,71 +1,241 @@
 <!DOCTYPE html>
-<html lang="de">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>uTalk NVDA Add-on</title>
 <style>
-body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; background-color: #f4f4f4; }
-.container { max-width: 800px; margin: auto; background: #fff; padding: 20px 40px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
-h1, h2, h3 { text-align: center; }
-b { font-weight: bold; }
-.section { margin-bottom: 30px; }
-.nvda-logo { display: block; margin: 0 auto 20px; width: 120px; height: auto; }
-.hotkey { background: #f8f9fa; border-left: 4px solid #3498db; padding: 15px; margin: 15px 0; border-radius: 0 4px 4px 0; }
-.tap-explanation { background: #e8f4fc; padding: 15px; border-radius: 5px; margin: 10px 0; }
-.feature-item { margin: 15px 0; padding-left: 10px; }
-.note { background: #fff3cd; border-left: 4px solid #ffc107; padding: 12px; margin: 15px 0; border-radius: 0 4px 4px 0; }
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1, h2, h3 {
+    text-align: center;
+}
+b {
+    font-weight: bold;
+}
+.section {
+    margin-bottom: 30px;
+}
+.nvda-logo {
+    display: block;
+    margin: 0 auto 20px;
+    width: 120px;
+    height: auto;
+}
+.hotkey {
+    background: #f8f9fa;
+    border-left: 4px solid #3498db;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 0 4px 4px 0;
+}
+.tap-explanation {
+    background: #e8f4fc;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+.feature-item {
+    margin: 15px 0;
+    padding-left: 10px;
+}
+.note {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 0 4px 4px 0;
+}
 </style>
 </head>
 <body>
+
 <div class="container">
+
 <div class="section">
     <img src="https://www.nvaccess.org/files/nvda/documentation/userGuide/images/nvda.ico" alt="NVDA Logo" class="nvda-logo">
     <h1>uTalk</h1>
     <br>
-    <p style="text-align: center; font-size: 1.2em; color: #2c3e50;"><b>Geben Sie Ihren Aktionen eine Stimme: Verwandeln Sie Standard-Hinweise in Ihre eigene Fantasie</b></p>
+    <p style="text-align: center;">Hören Sie jede Kopier-, Einfüge-, Ausschneide-, Rückgängig- und Speicheraktion in Echtzeit &mdash; in den von Ihnen gewählten Begriffen.</p>
 </div>
 <br>
 <div class="section">
     <p style="text-align: center;"><b>Autor:</b> chai chaimee</p>
     <p style="text-align: center;"><b>URL:</b> https://github.com/chaichaimee/uTalk</p>
 </div>
-<hr>
+<br>
+
 <div class="section">
-    <h2>Über Standard-Feedback hinaus</h2>
-    <p><b>uTalk</b> ist nicht nur ein Benachrichtigungswerkzeug – es ist eine Brücke zwischen Ihrem Arbeitsablauf und Ihrer Kreativität. Geben Sie sich nicht mit generischen Systemtönen zufrieden. Mit uTalk wird jeder Befehl zu einem Erlebnis, das auf Ihre persönlichen Vorlieben zugeschnitten ist und Ihre Zwischenablage- und Dateioperationen wie nie zuvor zum Leben erweckt.</p>
+<h2>Einleitung</h2>
+<br>
+<p>uTalk gibt jedes Mal eine kurze akustische Bestätigung aus, wenn Sie eine gängige Bearbeitungskombination verwenden &mdash; Kopieren, Einfügen, Ausschneiden, Rückgängig, Wiederherstellen, Alles auswählen, Speichern, Pfad kopieren und Datei kopieren. Anstatt sich zu fragen, ob Ihr Strg+C tatsächlich funktioniert hat, kündigt uTalk leise "kopieren" (oder ein beliebiges bevorzugtes Wort) direkt nach der Aktion an.</p>
+<br>
+<p>Jedes angesagte Wort kann durch Ihren eigenen Text ersetzt werden, und Sie können sogar zwei vollständige Sätze an Ansagen beibehalten &mdash; zum Beispiel Englisch und Ihre Muttersprache &mdash; und sofort mit einem einzigen Tastendruck zwischen ihnen umschalten.</p>
+<br>
+<p>uTalk schenkt außerdem dem Kopieren von ausgewähltem Text beim Surfen im Internet im NVDA-Modus "Lesemodus" besondere Aufmerksamkeit, bei dem ein normales Strg+C oft stumm fehlschlägt, da die Auswahl nur im virtuellen Puffer von NVDA existiert.</p>
 </div>
 <br>
+
 <div class="section">
-    <h2>Tastenkombinationen</h2>
-    <div class="hotkey">
-        <h3>NVDA+Alt+T</h3>
-        <h3>Einmal drücken : Sofortige Sprachumschaltung</h3>
-        <h3>Zweimal drücken : uTalk-Einstellungen öffnen</h3>
-        <p>Wechseln Sie mühelos im laufenden Betrieb zwischen Ihren konfigurierten Benutzersprachen (z. B. Englisch, Thai, Deutsch usw.).</p>
-    </div>
+<h3>Tastenkombinationen</h3>
+<br>
+<div class="hotkey">
+<b>NVDA+Alt+T</b><br>
+Einfach drücken : Zwischen Englisch und Ihrer Alternativsprache für alle Ansagen umschalten<br>
+Doppelt drücken : Das uTalk-Einstellungsfenster öffnen
 </div>
 <br>
-<div class="section">
-    <h2>Premium-Funktionen</h2>
-    <div class="feature-item">
-        <h3>1. Totale Befehlskontrolle</h3>
-        <p>Erhalten Sie sofortiges, anpassbares Sprach-Feedback für wichtige Aktionen: <b>Kopieren, Einfügen, Ausschneiden, Speichern, Alles auswählen und Rückgängig machen.</b></p>
-    </div>
-    <div class="feature-item">
-        <h3>2. Professionelles Anpassungspanel</h3>
-        <p>Übernehmen Sie die volle Kontrolle über Ihr Erlebnis. Das Einstellungsmenü ermöglicht es Ihnen, Sprachnachrichten für jede größere Operation neu zu definieren.</p>
-    </div>
+<div class="hotkey">
+<b>Strg+C</b><br>
+Einfach drücken : Kopieren, dann "kopieren" (oder Ihr benutzerdefiniertes Wort) ansagen
 </div>
 <br>
+<div class="hotkey">
+<b>Strg+V</b><br>
+Einfach drücken : Einfügen, dann "einfügen" ansagen
+</div>
+<br>
+<div class="hotkey">
+<b>Strg+X</b><br>
+Einfach drücken : Ausschneiden, dann "ausschneiden" ansagen
+</div>
+<br>
+<div class="hotkey">
+<b>Strg+Z</b><br>
+Einfach drücken : Rückgängig, dann "rückgängig" ansagen
+</div>
+<br>
+<div class="hotkey">
+<b>Strg+Y oder Strg+Umschalt+Z</b><br>
+Einfach drücken : Wiederherstellen, dann "wiederherstellen" ansagen
+</div>
+<br>
+<div class="hotkey">
+<b>Strg+A</b><br>
+Einfach drücken : Alles auswählen, dann "alles auswählen" ansagen
+</div>
+<br>
+<div class="hotkey">
+<b>Strg+S</b><br>
+Einfach drücken : Speichern, dann "speichern" ansagen
+</div>
+<br>
+<div class="hotkey">
+<b>Strg+Umschalt+C</b><br>
+Einfach drücken : "Als Pfad kopieren" ansagen (nur Windows Explorer), dann den Shortcut ausführen
+</div>
+<br>
+<div class="hotkey">
+<b>Strg+Alt+C</b><br>
+Einfach drücken : "Datei kopieren" ansagen (nur Windows Explorer), dann den Shortcut ausführen
+</div>
+<br>
+<div class="note">
+uTalk lauscht direkt auf diese Windows-Standardkombinationen. Ihr Shortcut funktioniert weiterhin wie gewohnt &mdash; uTalk fügt lediglich eine gesprochene Bestätigung hinzu.
+</div>
+</div>
+<br>
+
 <div class="section">
-    <h2>Unterstützen Sie das Projekt</h2>
-    <p style="text-align:center; font-size:1.1em;">
-      <strong><a href="https://github.com/chaichaimee" style="color:#0f766e; text-decoration:none;">Spenden über GitHub Sponsors</a></strong>
-    </p>
+<h2>Funktionen</h2>
+
+<div class="feature-item">
+<h3>1. Gesprochene Bestätigung für alltägliche Befehle</h3>
+<br>
+<p>Wenn Sie Strg+C, Strg+V, Strg+X, Strg+Z, Strg+Y (oder Strg+Umschalt+Z), Strg+A oder Strg+S drücken, leitet uTalk den Tastendruck zuerst an die Anwendung weiter und spricht kurz darauf ein kurzes Wort, das bestätigt, was passiert ist. Standardmäßig sind die Wörter einfaches Englisch: "copy", "paste", "cut", "undo", "redo", "select all" und "save".</p>
+<br>
+<p>Damit NVDA reaktionsfähig bleibt, werden Ansagen niemals sofort beim Tastendruck gesprochen &mdash; uTalk wartet einen Bruchteil einer Sekunde (100 Millisekunden) ab, damit die Anwendung die Aktion zuerst tatsächlich abschließen kann.</p>
+<br>
+<p>Aus Sicherheitsgründen ist jeder angesagte Text auf 200 Zeichen begrenzt; falls Sie jemals einen sehr langen benutzerdefinierten Ausdruck konfigurieren, wird dieser am Ende mit "...abgekürtzt" abgeschnitten, damit er die Sprachausgabe niemals überfordert.</p>
 </div>
-<div class="footer-note">
-<p>&copy; 2026 Chai Chaimee • uTalk NVDA Add-on • Veröffentlicht unter GNU GPL v2+</p>
+
+<div class="feature-item">
+<h3>2. Intelligente Kopierverarbeitung im Lesemodus</h3>
+<br>
+<p>Das Kopieren von Text beim Lesen einer Webseite im NVDA-Lesemodus unterscheidet sich vom Kopieren in einem normalen bearbeitbaren Feld, und uTalk behandelt beide Fälle korrekt:</p>
+<br>
+<p><b>Schritt für Schritt, wenn Sie Strg+C drücken:</b></p>
+<br>
+<p>1. uTalk prüft, ob sich Ihr aktueller Fokus innerhalb eines virtuellen Dokuments im Lesemodus befindet (zum Beispiel eine Webseite in einem Browser).</p>
+<br>
+<p>2. Wenn Sie <b>sich</b> im Lesemodus befinden: Eine mit Umschalt+Pfeiltasten vorgenommene Textauswahl existiert nur im virtuellen Puffer von NVDA, nicht als echte Auswahl im Browser selbst. Das Senden des normalen Strg+C würde in dieser Situation überhaupt nichts kopieren. Stattdessen liest uTalk den ausgewählten Text direkt aus dem virtuellen Puffer von NVDA und legt ihn mithilfe der eigenen Zwischenablagefunktion von NVDA in der Zwischenablage ab. Wenn kein Text ausgewählt ist, leitet es Ihr Strg+C einfach normal weiter.</p>
+<br>
+<p>3. Wenn Sie sich <b>nicht</b> im Lesemodus befinden (z. B. beim Tippen in ein Textfeld oder eine Textverarbeitung): Es existiert bereits eine echte Auswahl auf Betriebssystemebene, sodass uTalk Ihr Strg+C zuerst an die Anwendung weiterleitet, damit diese ihr eigenes Kopieren durchführt (wodurch eventuelle Spezialformatierungen erhalten bleiben).</p>
+<br>
+<p>4. In beiden Fällen kündigt uTalk nach Abschluss des Kopiervorgangs "kopieren" (oder Ihr benutzerdefiniertes Wort) an.</p>
+</div>
+
+<div class="feature-item">
+<h3>3. Nur-Explorer-Ansagen für Pfad kopieren und Datei kopieren</h3>
+<br>
+<p>Der Windows Explorer verfügt über zwei zusätzliche Tastenkombinationen, die in den meisten anderen Programmen nicht existieren: Als Pfad kopieren (Strg+Umschalt+C) und Datei kopieren (Strg+Alt+C). uTalk prüft, ob das aktuell fokussierte Fenster tatsächlich zum Windows Explorer gehört, bevor diese beiden Befehle angesagt werden, sodass Sie "als Pfad kopieren" oder "datei kopieren" nur hören, wenn Sie im Explorer selbst arbeiten.</p>
+</div>
+
+<div class="feature-item">
+<h3>4. Ein Hotkey, zwei Aufgaben: Sprachumschaltung und Zugriff auf Einstellungen</h3>
+<br>
+<div class="tap-explanation">
+<p>NVDA+Alt+T ist ein einzelner Hotkey, der sich je nach Anzahl der aufeinanderfolgenden Taps unterschiedlich verhält:</p>
+<br>
+<p><b>Einfach drücken</b> &mdash; uTalk wartet bis zu 500 Millisekunden, um zu sehen, ob Sie erneut tippen. Wenn nicht, schaltet es Ihre aktive Ansagesprache (Englisch oder Ihre Alternativsprache) um und spricht sofort den Namen der neuen Sprache als Bestätigung aus und speichert diese Auswahl.</p>
+<br>
+<p><b>Doppelt drücken</b> (oder öfter) &mdash; Wenn ein zweiter Tap innerhalb von 600 Millisekunden erfolgt, öffnet uTalk stattdessen das NVDA-Einstellungsdialogfeld direkt in der uTalk-Kategorie.</p>
+<br>
+<p>Intern setzt jeder Tap einen kurzen Timer zurück; erst wenn der Timer abläuft, entscheidet uTalk, was tatsächlich passiert ist.</p>
 </div>
 </div>
+
+<div class="feature-item">
+<h3>5. Vollständig anpassbare Befehlsausdrücke</h3>
+<br>
+<p>Das Öffnen des uTalk-Einstellungsfelds bietet Ihnen ein Textfeld für einen Alternativsprachennamen sowie jeweils ein Textfeld für jeden Befehl: Kopieren, Pfad kopieren, Datei kopieren, Ausschneiden, Einfügen, Wiederherstellen, Speichern, Alles auswählen und Rückgängig. Was auch immer Sie eingeben, wird von NVDA für diesen Befehl gesprochen.</p>
+<br>
+<p>Eine Schaltfläche "Standardwerte wiederherstellen" setzt jedes Feld auf leer zurück und entspricht den integrierten Standards von uTalk.</p>
+<br>
+<p>Das Speichern Ihrer Änderungen aktualisiert das laufende Add-On sofort (kein Neustart erforderlich) und gibt eine kurze Bestätigung aus.</p>
+<br>
+<div class="note">
+Um zu verhindern, dass das Einstellungsdialogfeld beim Öffnen einfriert, liest das Bedienfeld seine aktuellen Werte aus den speicherinternen Einstellungen des Add-Ons.
+</div>
+</div>
+
+<div class="feature-item">
+<h3>6. Zuverlässige Speicherung der Einstellungen</h3>
+<br>
+<p>Ihre angepassten Phrasen werden in einer Konfigurationsdatei in Ihrem NVDA-Benutzerkonfigurationsordner in einem Unterordner namens "ChaiChaimee" gespeichert. Das Speichern erfolgt sicher über eine temporäre Datei und automatisches Neuladen.</p>
+<br>
+<p>Wenn Sie eine ältere Version von uTalk verwenden, verschiebt uTalk Ihre vorhandenen Einstellungen beim ersten Laden automatisch, sodass Sie Ihre Anpassungen beim Aktualisieren nicht verlieren.</p>
+</div>
+
+</div>
+
+<br><br>
+<h2>Unterstützen Sie mich</h2>
+    <p>Wenn dieses Tool Ihr Leben erleichtert hat, erwägen Sie bitte, das nächste Update mit einer kleinen Spende zu unterstützen.</p>
+<br>
+<p>
+  <a href="https://buy.stripe.com/dRm9AU1xQ3Ds22N6VK1VK01">
+    <img src="https://img.shields.io/badge/Donate-Support%20Me-blue?style=for-the-badge&logo=stripe" alt="Support me">
+  </a>
+</p>
+<br>
+<p>Ihre Unterstützung bedeutet mir alles. Lassen Sie uns gemeinsam etwas Großartiges aufbauen</p>
+<br>
+  <div class="footer-note">
+<p>&copy; 2026 Chai Chaimee NVDA Add-on Veröffentlicht unter GNU GPL</p>
+</div>
+
+</div> <!-- End container -->
 </body>
 </html>
