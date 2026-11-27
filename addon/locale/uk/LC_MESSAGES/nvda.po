@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: uTalk 2026.9.9\n"
+"Project-Id-Version: uTalk 2026.12.0\n"
 "Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
-"POT-Creation-Date: 2026-09-08 12:19+0700\n"
+"POT-Creation-Date: 2026-11-27 15:42+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: chaiBot and Malee Yamazaki\n"
 "Language-Team: Ukrainian\n"
@@ -10,61 +10,185 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: DevOn Addon\n"
+"X-Generator: ChaiBot Addon\n"
 
-#: uTalkCore.py:31
+#: settingsPanel.py:84
+msgid "&Application rules (one per line: name=off, name=main or name=alt):"
+msgstr "&Правила додатку (по одному на рядок: name=off, name=main або name=alt):"
+
+#: uTalkCore.py:62
 msgid "...truncated"
 msgstr "...скорочено"
 
-#: settingsPanel.py:33
+#: uTalkCore.py:483
+msgid "Alternate language"
+msgstr "Альтернативна мова"
+
+#: settingsPanel.py:57
 msgid "Alternate language code:"
 msgstr "Альтернативний код мови:"
 
-#: settingsPanel.py:50
+#: uTalkCore.py:505
+msgid "Alternate language is not set. Press the shortcut twice to open the uTalk settings and add phrases."
+msgstr "Альтернативну мову не налаштовано. Натисніть швидку клавішу двічі, щоб відкрити налаштування uTalk та додати фрази."
+
+#: settingsPanel.py:79
+msgid "Announce copy, cut and paste &only when they take effect"
+msgstr "Оголошувати копіювання, вирізання та вставлення &лише тоді, коли вони спрацьовують"
+
+#: settingsPanel.py:72
+msgid "Announcement &detail:"
+msgstr "&Деталізація оголошень:"
+
+#: settingsPanel.py:64
+msgid "Announcement &output:"
+msgstr "&Виведення оголошень:"
+
+#: settingsPanel.py:19
+msgid "Beep only"
+msgstr "Лише звуковий сигнал"
+
+#: settingsPanel.py:18
+msgid "Braille only"
+msgstr "Лише Брайль"
+
+#: uTalkCore.py:466
+msgid "Cannot detect the current application"
+msgstr "Не вдається визначити поточний додаток"
+
+#: settingsPanel.py:103
 msgid "Command translations:"
 msgstr "Переклади команд:"
 
-#: settingsPanel.py:39
+#: settingsPanel.py:92
 msgid "Copy"
 msgstr "Копіювати"
 
-#: settingsPanel.py:41
+#: settingsPanel.py:94
 msgid "Copy file"
 msgstr "Копіювати файл"
 
-#: settingsPanel.py:40
+#: settingsPanel.py:93
 msgid "Copy path"
 msgstr "Копіювати шлях"
 
-#: settingsPanel.py:42
+#: uTalkCore.py:477
+msgid "Could not save the application rule"
+msgstr "Не вдалося зберегти правило додатку"
+
+#: settingsPanel.py:95
 msgid "Cut"
 msgstr "Вирізати"
 
-#: settingsPanel.py:43
+#: settingsPanel.py:26
+msgid "Detailed (adds counts and what undo or redo changed)"
+msgstr "Детально (додає кількість і те, що змінилося після скасування або повторення)"
+
+#: uTalkCore.py:484
+msgid "English"
+msgstr "Англійська"
+
+#: settingsPanel.py:130
+msgid "Invalid configuration"
+msgstr "Недійсна конфігурація"
+
+#: settingsPanel.py:148
+msgid "Line {line} of the application rules is not valid. Use name=off, name=main or name=alt."
+msgstr "Рядок {line} у правилах додатку є недійсним. Використовуйте name=off, name=main або name=alt."
+
+#: uTalkCore.py:449
+msgid "Mute or unmute uTalk announcements"
+msgstr "Вимкнути або увімкнути оголошення uTalk"
+
+#: uTalkCore.py:93
+msgid "Nothing to copy"
+msgstr "Немає чого копіювати"
+
+#: uTalkCore.py:92
+msgid "Nothing to cut"
+msgstr "Немає чого вирізати"
+
+#: settingsPanel.py:96
 msgid "Paste"
 msgstr "Вставити"
 
-#: settingsPanel.py:44
+#: settingsPanel.py:97
 msgid "Redo"
 msgstr "Повторити"
 
-#: settingsPanel.py:60
+#: settingsPanel.py:115
 msgid "Restore Defaults"
 msgstr "Відновити значення за замовчуванням"
 
-#: settingsPanel.py:45
+#: settingsPanel.py:98
 msgid "Save"
 msgstr "Зберегти"
 
-#: settingsPanel.py:46
+#: settingsPanel.py:99
 msgid "Select all"
 msgstr "Виділити все"
 
-#: settingsPanel.py:47
+#: settingsPanel.py:25
+msgid "Short"
+msgstr "Коротко"
+
+#: settingsPanel.py:16
+msgid "Speech and braille"
+msgstr "Мовлення та Брайль"
+
+#: settingsPanel.py:17
+msgid "Speech only"
+msgstr "Лише мовлення"
+
+#: settingsPanel.py:134
+msgid "The text is longer than {limit} characters. Shorten it before saving."
+msgstr "Текст перевищує {limit} символів. Скоротіть його перед збереженням."
+
+#: uTalkCore.py:459
+msgid "Turn uTalk off or on for the current application"
+msgstr "Вимкнути або увімкнути uTalk для поточної програми"
+
+#: settingsPanel.py:100
 msgid "Undo"
 msgstr "Скасувати"
 
-#: settingsPanel.py:14
-#: uTalkCore.py:36
+#: uTalkCore.py:134
+msgid "added {text}"
+msgstr "додано {text}"
+
+#: uTalkCore.py:132
+msgid "removed {text}"
+msgstr "видалено {text}"
+
+#: uTalkCore.py:127
+msgid "replaced {removed} with {added}"
+msgstr "замінено {removed} на {added}"
+
+#: settingsPanel.py:38
+#: uTalkCore.py:139
 msgid "uTalk"
 msgstr "uTalk"
+
+#: uTalkCore.py:436
+msgid "uTalk multi tap. Once: swap languages. Twice: open settings. Three times: turn uTalk off or on for the current application. Four times: mute or unmute uTalk announcements"
+msgstr "Багатократне натискання uTalk. Один раз: поміняти мови місцями. Двічі: відкрити налаштування. Тричі: вимкнути або увімкнути uTalk для поточної програми. Чотири рази: вимкнути або увімкнути звук сповіщень uTalk"
+
+#: uTalkCore.py:457
+msgid "uTalk muted"
+msgstr "Звук uTalk вимкнено"
+
+#: uTalkCore.py:474
+msgid "uTalk off for {appName}"
+msgstr "uTalk вимкнено для {appName}"
+
+#: uTalkCore.py:471
+msgid "uTalk on for {appName}"
+msgstr "uTalk увімкнено для {appName}"
+
+#: uTalkCore.py:457
+msgid "uTalk unmuted"
+msgstr "Звук uTalk увімкнено"
+
+#: uTalkCore.py:109
+msgid "whitespace"
+msgstr "пробіл"

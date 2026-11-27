@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: uTalk 2026.9.9\n"
+"Project-Id-Version: uTalk 2026.12.0\n"
 "Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
-"POT-Creation-Date: 2026-09-08 12:19+0700\n"
+"POT-Creation-Date: 2026-11-27 15:42+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: chaiBot and Malee Yamazaki\n"
 "Language-Team: Korean\n"
@@ -10,61 +10,185 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: DevOn Addon\n"
+"X-Generator: ChaiBot Addon\n"
 
-#: uTalkCore.py:31
+#: settingsPanel.py:84
+msgid "&Application rules (one per line: name=off, name=main or name=alt):"
+msgstr "&응용 프로그램 규칙 (줄당 하나: name=off, name=main 또는 name=alt):"
+
+#: uTalkCore.py:62
 msgid "...truncated"
 msgstr "...잘림"
 
-#: settingsPanel.py:33
+#: uTalkCore.py:483
+msgid "Alternate language"
+msgstr "대체 언어"
+
+#: settingsPanel.py:57
 msgid "Alternate language code:"
 msgstr "대체 언어 코드:"
 
-#: settingsPanel.py:50
+#: uTalkCore.py:505
+msgid "Alternate language is not set. Press the shortcut twice to open the uTalk settings and add phrases."
+msgstr "대체 언어가 설정되지 않았습니다. 단축키를 두 번 눌러 uTalk 설정에서 문구를 추가하세요."
+
+#: settingsPanel.py:79
+msgid "Announce copy, cut and paste &only when they take effect"
+msgstr "복사, 잘라내기, 붙여넣기는 &실행될 때만 알림"
+
+#: settingsPanel.py:72
+msgid "Announcement &detail:"
+msgstr "알림 &상세 정보:"
+
+#: settingsPanel.py:64
+msgid "Announcement &output:"
+msgstr "알림 &출력:"
+
+#: settingsPanel.py:19
+msgid "Beep only"
+msgstr "삐 소리만"
+
+#: settingsPanel.py:18
+msgid "Braille only"
+msgstr "점자만"
+
+#: uTalkCore.py:466
+msgid "Cannot detect the current application"
+msgstr "현재 응용 프로그램을 감지할 수 없습니다."
+
+#: settingsPanel.py:103
 msgid "Command translations:"
 msgstr "명령어 번역:"
 
-#: settingsPanel.py:39
+#: settingsPanel.py:92
 msgid "Copy"
 msgstr "복사"
 
-#: settingsPanel.py:41
+#: settingsPanel.py:94
 msgid "Copy file"
 msgstr "파일 복사"
 
-#: settingsPanel.py:40
+#: settingsPanel.py:93
 msgid "Copy path"
 msgstr "경로 복사"
 
-#: settingsPanel.py:42
+#: uTalkCore.py:477
+msgid "Could not save the application rule"
+msgstr "응용 프로그램 규칙을 저장할 수 없습니다."
+
+#: settingsPanel.py:95
 msgid "Cut"
 msgstr "잘라내기"
 
-#: settingsPanel.py:43
+#: settingsPanel.py:26
+msgid "Detailed (adds counts and what undo or redo changed)"
+msgstr "상세함 (개수 및 실행 취소나 다시 실행으로 변경된 내용 추가)"
+
+#: uTalkCore.py:484
+msgid "English"
+msgstr "영어"
+
+#: settingsPanel.py:130
+msgid "Invalid configuration"
+msgstr "잘못된 설정"
+
+#: settingsPanel.py:148
+msgid "Line {line} of the application rules is not valid. Use name=off, name=main or name=alt."
+msgstr "응용 프로그램 규칙의 {line} 번째 줄이 잘못되었습니다. name=off, name=main 또는 name=alt를 사용하세요."
+
+#: uTalkCore.py:449
+msgid "Mute or unmute uTalk announcements"
+msgstr "uTalk 알림 음소거 또는 음소거 해제"
+
+#: uTalkCore.py:93
+msgid "Nothing to copy"
+msgstr "복사할 내용이 없습니다."
+
+#: uTalkCore.py:92
+msgid "Nothing to cut"
+msgstr "잘라낼 내용이 없습니다."
+
+#: settingsPanel.py:96
 msgid "Paste"
 msgstr "붙여넣기"
 
-#: settingsPanel.py:44
+#: settingsPanel.py:97
 msgid "Redo"
 msgstr "다시 실행"
 
-#: settingsPanel.py:60
+#: settingsPanel.py:115
 msgid "Restore Defaults"
 msgstr "기본값 복원"
 
-#: settingsPanel.py:45
+#: settingsPanel.py:98
 msgid "Save"
 msgstr "저장"
 
-#: settingsPanel.py:46
+#: settingsPanel.py:99
 msgid "Select all"
 msgstr "전체 선택"
 
-#: settingsPanel.py:47
+#: settingsPanel.py:25
+msgid "Short"
+msgstr "짧게"
+
+#: settingsPanel.py:16
+msgid "Speech and braille"
+msgstr "음성 및 점자"
+
+#: settingsPanel.py:17
+msgid "Speech only"
+msgstr "음성만"
+
+#: settingsPanel.py:134
+msgid "The text is longer than {limit} characters. Shorten it before saving."
+msgstr "텍스트가 {limit}글자보다 깁니다. 저장하기 전에 줄이세요."
+
+#: uTalkCore.py:459
+msgid "Turn uTalk off or on for the current application"
+msgstr "현재 응용 프로그램에서 uTalk 켜기 또는 끄기"
+
+#: settingsPanel.py:100
 msgid "Undo"
 msgstr "실행 취소"
 
-#: settingsPanel.py:14
-#: uTalkCore.py:36
+#: uTalkCore.py:134
+msgid "added {text}"
+msgstr "{text} 추가됨"
+
+#: uTalkCore.py:132
+msgid "removed {text}"
+msgstr "{text} 제거됨"
+
+#: uTalkCore.py:127
+msgid "replaced {removed} with {added}"
+msgstr "{removed}을(를) {added}(으)로 바꿈"
+
+#: settingsPanel.py:38
+#: uTalkCore.py:139
 msgid "uTalk"
 msgstr "uTalk"
+
+#: uTalkCore.py:436
+msgid "uTalk multi tap. Once: swap languages. Twice: open settings. Three times: turn uTalk off or on for the current application. Four times: mute or unmute uTalk announcements"
+msgstr "uTalk 멀티 탭. 한 번: 언어 전환, 두 번: 설정 열기, 세 번: 현재 응용 프로그램에서 uTalk 켜기 또는 끄기, 네 번: uTalk 음성 안내 음소거 또는 해제"
+
+#: uTalkCore.py:457
+msgid "uTalk muted"
+msgstr "uTalk 음소거됨"
+
+#: uTalkCore.py:474
+msgid "uTalk off for {appName}"
+msgstr "{appName}에서 uTalk 꺼짐"
+
+#: uTalkCore.py:471
+msgid "uTalk on for {appName}"
+msgstr "{appName}에서 uTalk 켜짐"
+
+#: uTalkCore.py:457
+msgid "uTalk unmuted"
+msgstr "uTalk 음소거 해제됨"
+
+#: uTalkCore.py:109
+msgid "whitespace"
+msgstr "공백"

@@ -1,19 +1,40 @@
 # config.py
 
+import copy
 import json
 import os
-import config
+import shutil
+import tempfile
+import globalVars
 import addonHandler
 import logHandler
-import tempfile
-import shutil
 
 addonHandler.initTranslation()
 
+PUBLISHER_FOLDER_NAME = "ChaiChaimee"
+ADDON_FOLDER_NAME = "uTalk"
 CONFIG_FILENAME = "uTalk.json"
+MAX_PHRASE_LENGTH = 200
+
+OUTPUT_MODES = ("speechBraille", "speech", "braille", "beep")
+VERBOSITY_LEVELS = ("short", "detailed")
+APP_RULE_VALUES = ("off", "main", "alt")
+
 DEFAULT_CONFIG = {
 	"last_used_language": False,
 	"language_alt": "",
+	"outputMode": "speechBraille",
+	"verbosity": "short",
+	"verifyActions": True,
+	"appRules": {
+		"cmd": "off",
+		"conhost": "off",
+		"openconsole": "off",
+		"powershell": "off",
+		"pwsh": "off",
+		"windowsterminal": "off",
+		"wt": "off"
+	},
 	"copy": "copy",
 	"copy_alt": "",
 	"copyAsPath": "copy as path",
@@ -33,133 +54,267 @@ DEFAULT_CONFIG = {
 	"undo_alt": ""
 }
 
-# Migration flag
 _migrated = False
+_lastSavedSnapshot = None
+
+
+def getDefaultConfig():
+	return copy.deepcopy(DEFAULT_CONFIG)
+
+
+def hasAlternateLanguage(configData):
+	return any(
+		isinstance(value, str) and value.strip()
+		for key, value in configData.items()
+		if key.endswith("_alt") and key != "language_alt"
+	)
+
+
+def normalizeAppName(rawName):
+	appName = rawName.strip().lower()
+	if appName.endswith(".exe"):
+		appName = appName[:-4]
+	return appName
+
+
+def parseAppRules(ruleText):
+	rules = {}
+	for lineNumber, rawLine in enumerate(ruleText.splitlines(), start=1):
+		line = rawLine.strip()
+		if not line:
+			continue
+		appName, separator, ruleValue = line.partition("=")
+		appName = normalizeAppName(appName)
+		ruleValue = ruleValue.strip().lower()
+		if not separator or not appName or ruleValue not in APP_RULE_VALUES:
+			return None, lineNumber
+		rules[appName] = ruleValue
+	return rules, 0
+
+
+def formatAppRules(rules):
+	return "\n".join(f"{appName}={ruleValue}" for appName, ruleValue in sorted(rules.items()))
+
 
 def getConfigPath():
-	"""Return the path to the configuration file in the ChaiChaimee subdirectory."""
-	base_dir = config.getUserDefaultConfigPath()
-	return os.path.join(base_dir, "ChaiChaimee", CONFIG_FILENAME)
+	return os.path.join(
+		globalVars.appArgs.configPath,
+		PUBLISHER_FOLDER_NAME,
+		ADDON_FOLDER_NAME,
+		CONFIG_FILENAME
+	)
 
-def _migrate_old_config():
-	r"""
-	Migrate configuration from old location (userConfig\uTalk.json) to new location
-	(userConfig\ChaiChaimee\uTalk.json) and clean up old file if it exists.
-	"""
-	base_dir = config.getUserDefaultConfigPath()
-	old_path = os.path.join(base_dir, CONFIG_FILENAME)
-	new_path = getConfigPath()
 
-	# If old config does not exist, nothing to do
-	if not os.path.isfile(old_path):
-		return
+def _getLegacyConfigPaths():
+	baseDir = globalVars.appArgs.configPath
+	return [
+		os.path.join(baseDir, PUBLISHER_FOLDER_NAME, CONFIG_FILENAME),
+		os.path.join(baseDir, CONFIG_FILENAME)
+	]
 
-	# If new config already exists, we can safely delete the old one
-	if os.path.isfile(new_path):
-		try:
-			os.remove(old_path)
-			logHandler.log.info(f"uTalk: Removed old config file at {old_path} because new config exists.")
-		except Exception as e:
-			logHandler.log.warning(f"uTalk: Could not remove old config file at {old_path}: {str(e)}")
-		return
 
-	# New config does not exist, so migrate
-	logHandler.log.info(f"uTalk: Migrating config from {old_path} to {new_path}.")
+def _readJsonDict(path):
 	try:
-		# Ensure target directory exists
-		os.makedirs(os.path.dirname(new_path), exist_ok=True)
-		# Try to move first (atomic if on same filesystem)
-		shutil.move(old_path, new_path)
-		logHandler.log.info("uTalk: Config migration successful (move).")
-	except Exception as e:
-		logHandler.log.warning(f"uTalk: Move failed, trying copy and delete: {str(e)}")
-		try:
-			shutil.copy2(old_path, new_path)
-			os.remove(old_path)
-			logHandler.log.info("uTalk: Config migration successful (copy+delete).")
-		except Exception as e2:
-			logHandler.log.error(f"uTalk: Failed to migrate config: {str(e2)}")
-			# If copy also fails, we leave old file in place
+		with open(path, "r", encoding="utf-8") as configFile:
+			loadedData = json.load(configFile)
+	except (OSError, ValueError) as e:
+		logHandler.log.warning(f"uTalk: Could not read config file {path}: {str(e)}")
+		return None
+	if not isinstance(loadedData, dict):
+		logHandler.log.warning(f"uTalk: Config file {path} does not hold a JSON object.")
+		return None
+	return loadedData
 
-def _ensure_migration():
-	"""Ensure migration is performed only once."""
+
+def _findLegacyConfigs():
+	existingPaths = [path for path in _getLegacyConfigPaths() if os.path.isfile(path)]
+	existingPaths.sort(key=os.path.getmtime, reverse=True)
+	return existingPaths
+
+
+def _isCopyVerified(sourcePath, targetPath):
+	try:
+		if os.path.getsize(sourcePath) != os.path.getsize(targetPath):
+			return False
+	except OSError:
+		return False
+	return _readJsonDict(targetPath) is not None
+
+
+def _removeQuietly(path):
+	if os.path.isfile(path):
+		try:
+			os.remove(path)
+		except OSError as e:
+			logHandler.log.warning(f"uTalk: Could not remove temporary file {path}: {str(e)}")
+
+
+def _copyAtomically(sourcePath, targetPath):
+	targetDir = os.path.dirname(targetPath)
+	os.makedirs(targetDir, exist_ok=True)
+	tempFd, tempPath = tempfile.mkstemp(prefix=CONFIG_FILENAME + ".", dir=targetDir)
+	os.close(tempFd)
+	try:
+		shutil.copyfile(sourcePath, tempPath)
+		os.replace(tempPath, targetPath)
+	except OSError:
+		if os.path.exists(tempPath):
+			_removeQuietly(tempPath)
+		raise
+
+
+def _removeLegacyFile(legacyPath, newPath):
+	if legacyPath not in _getLegacyConfigPaths() or legacyPath == newPath:
+		return
+	if _readJsonDict(newPath) is None:
+		logHandler.log.warning(f"uTalk: Keeping old config file {legacyPath} because the new config is not valid.")
+		return
+	if os.path.isfile(legacyPath):
+		try:
+			os.remove(legacyPath)
+			logHandler.log.info(f"uTalk: Removed old config file at {legacyPath}.")
+		except OSError as e:
+			logHandler.log.warning(f"uTalk: Could not remove old config file at {legacyPath}: {str(e)}")
+
+
+def _migrateOldConfig():
+	legacyPaths = _findLegacyConfigs()
+	if not legacyPaths:
+		return
+	newPath = getConfigPath()
+	logHandler.log.info(f"uTalk: Found old config file(s): {legacyPaths}. New location is {newPath}.")
+
+	if _readJsonDict(newPath) is None:
+		sourcePath = next((path for path in legacyPaths if _readJsonDict(path) is not None), None)
+		if not sourcePath:
+			logHandler.log.error("uTalk: Old config file(s) exist but none holds valid JSON. Nothing migrated.")
+			return
+		logHandler.log.info(f"uTalk: Migrating config from {sourcePath} to {newPath}.")
+		try:
+			_copyAtomically(sourcePath, newPath)
+		except OSError as e:
+			logHandler.log.error(f"uTalk: Failed to migrate config: {str(e)}")
+			return
+		if not _isCopyVerified(sourcePath, newPath):
+			logHandler.log.error("uTalk: Migrated config failed verification. Old file(s) kept.")
+			return
+		logHandler.log.info("uTalk: Config migration successful.")
+	else:
+		logHandler.log.info("uTalk: New config already exists, old file(s) are stale.")
+
+	for legacyPath in legacyPaths:
+		_removeLegacyFile(legacyPath, newPath)
+
+
+def _ensureMigration():
 	global _migrated
 	if _migrated:
 		return
 	_migrated = True
-	_migrate_old_config()
+	_migrateOldConfig()
+
+
+def _isValidAppRules(value):
+	if not isinstance(value, dict):
+		return False
+	return all(
+		isinstance(appName, str) and appName and value[appName] in APP_RULE_VALUES
+		for appName in value
+	)
+
+
+def _isValidValue(key, value):
+	defaultValue = DEFAULT_CONFIG[key]
+	if key == "outputMode":
+		return value in OUTPUT_MODES
+	if key == "verbosity":
+		return value in VERBOSITY_LEVELS
+	if key == "appRules":
+		return _isValidAppRules(value)
+	if isinstance(defaultValue, bool):
+		return isinstance(value, bool)
+	return isinstance(value, type(defaultValue))
+
+
+def _normalizeConfig(loadedData):
+	finalConfig = getDefaultConfig()
+	for key, value in loadedData.items():
+		if key not in DEFAULT_CONFIG:
+			finalConfig[key] = value
+			continue
+		if _isValidValue(key, value):
+			finalConfig[key] = value
+			continue
+		logHandler.log.warning(f"uTalk: Ignoring invalid value for config key {key}. Using its default.")
+	return finalConfig
+
+
+def _snapshotOf(data):
+	return json.dumps(data, sort_keys=True, ensure_ascii=False)
+
 
 def loadConfig():
-	_ensure_migration()
+	global _lastSavedSnapshot
+	_ensureMigration()
 	path = getConfigPath()
 	logHandler.log.info(f"uTalk: Attempting to load config from: {path}")
-	if os.path.isfile(path):
-		try:
-			with open(path, "r", encoding="utf-8") as f:
-				loaded_data = json.load(f)
-				logHandler.log.info(f"uTalk: Successfully loaded raw config data: {loaded_data}")
-				final_config = DEFAULT_CONFIG.copy()
-				final_config.update(loaded_data)
-				logHandler.log.info(f"uTalk: Merged config after load: {final_config}")
-				return final_config
-		except json.JSONDecodeError as e:
-			logHandler.log.error(f"uTalk: JSON decoding error loading config from {path}: {str(e)}. File might be corrupt or empty.")
-			logHandler.log.info(f"uTalk: Returning default config due to JSON error.")
-			return DEFAULT_CONFIG.copy()
-		except Exception as e:
-			logHandler.log.error(f"uTalk: Generic error loading config from {path}: {str(e)}")
-			logHandler.log.info(f"uTalk: Returning default config due to error.")
-			return DEFAULT_CONFIG.copy()
-	else:
-		# If config not found at new path, check if old path exists but migration failed or was skipped.
-		old_path = os.path.join(config.getUserDefaultConfigPath(), CONFIG_FILENAME)
-		if os.path.isfile(old_path):
-			logHandler.log.warning(f"uTalk: Config not found at new path but exists at old path. Attempting to load from old path as fallback.")
-			try:
-				with open(old_path, "r", encoding="utf-8") as f:
-					loaded_data = json.load(f)
-					logHandler.log.info(f"uTalk: Successfully loaded raw config data from old path: {loaded_data}")
-					final_config = DEFAULT_CONFIG.copy()
-					final_config.update(loaded_data)
-					return final_config
-			except Exception as e:
-				logHandler.log.error(f"uTalk: Error loading from old path: {str(e)}")
+	loadedData = _readJsonDict(path) if os.path.isfile(path) else None
 
-		logHandler.log.info(f"uTalk: Config file not found at {path}, returning default config.")
-		return DEFAULT_CONFIG.copy()
+	if loadedData is not None:
+		_lastSavedSnapshot = _snapshotOf(loadedData)
+	else:
+		_lastSavedSnapshot = None
+		for legacyPath in _findLegacyConfigs():
+			loadedData = _readJsonDict(legacyPath)
+			if loadedData is not None:
+				logHandler.log.warning(f"uTalk: Config not usable at new path. Loaded from old path {legacyPath} as fallback.")
+				break
+
+	if loadedData is None:
+		logHandler.log.info(f"uTalk: No usable config found at {path}, returning default config.")
+		return getDefaultConfig()
+
+	finalConfig = _normalizeConfig(loadedData)
+	logHandler.log.debug(f"uTalk: Merged config after load: {finalConfig}")
+	return finalConfig
+
 
 def saveConfig(data):
-	_ensure_migration()
+	global _lastSavedSnapshot
+	_ensureMigration()
 	path = getConfigPath()
-	dir_path = os.path.dirname(path)
-	logHandler.log.info(f"uTalk: Attempting to save config to: {path}")
-	logHandler.log.info(f"uTalk: Data to be saved: {data}")
+	dirPath = os.path.dirname(path)
 	try:
-		os.makedirs(dir_path, exist_ok=True)
-
-		# Use a temporary file for atomic write
-		temp_fd, temp_path = tempfile.mkstemp(prefix=CONFIG_FILENAME + '.', dir=dir_path)
-		with os.fdopen(temp_fd, 'w', encoding='utf-8') as f:
-			json.dump(data, f, indent=2, ensure_ascii=False)
-
-		# Atomically replace the original file
-		os.replace(temp_path, path)
-
-		logHandler.log.info(f"uTalk: Config successfully saved to {path} via atomic write. Verifying content...")
-
-		# Verification step
-		with open(path, "r", encoding="utf-8") as f_read:
-			verify_data = json.load(f_read)
-			logHandler.log.info(f"uTalk: Verified saved content: {verify_data}")
-			if verify_data == data:
-				logHandler.log.info("uTalk: Saved data matches verification.")
-				return True
-			else:
-				logHandler.log.error("uTalk: Saved data MISMATCH after verification!")
-				return False
-	except Exception as e:
-		logHandler.log.error(f"uTalk: Error saving config to {path}: {str(e)}")
-		# Clean up temporary file if it exists and was not renamed
-		if os.path.exists(temp_path):
-			os.remove(temp_path)
+		newSnapshot = _snapshotOf(data)
+	except (TypeError, ValueError) as e:
+		logHandler.log.error(f"uTalk: Config data cannot be serialized: {str(e)}")
 		return False
+	if newSnapshot == _lastSavedSnapshot and os.path.isfile(path):
+		logHandler.log.debug("uTalk: Config unchanged since last save, write skipped.")
+		return True
+
+	tempPath = None
+	logHandler.log.info(f"uTalk: Attempting to save config to: {path}")
+	logHandler.log.debug(f"uTalk: Data to be saved: {data}")
+	try:
+		os.makedirs(dirPath, exist_ok=True)
+		tempFd, tempPath = tempfile.mkstemp(prefix=CONFIG_FILENAME + ".", dir=dirPath)
+		with os.fdopen(tempFd, "w", encoding="utf-8") as configFile:
+			json.dump(data, configFile, indent=2, ensure_ascii=False)
+			configFile.flush()
+			os.fsync(configFile.fileno())
+		os.replace(tempPath, path)
+		tempPath = None
+	except (OSError, TypeError, ValueError) as e:
+		logHandler.log.error(f"uTalk: Error saving config to {path}: {str(e)}")
+		if tempPath and os.path.exists(tempPath):
+			_removeQuietly(tempPath)
+		return False
+
+	verifyData = _readJsonDict(path)
+	if verifyData != data:
+		logHandler.log.error("uTalk: Saved data MISMATCH after verification!")
+		return False
+	_lastSavedSnapshot = newSnapshot
+	logHandler.log.info(f"uTalk: Config successfully saved to {path} via atomic write and verified.")
+	return True

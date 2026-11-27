@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: uTalk 2026.9.9\n"
+"Project-Id-Version: uTalk 2026.12.0\n"
 "Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
-"POT-Creation-Date: 2026-09-08 12:19+0700\n"
+"POT-Creation-Date: 2026-11-27 15:42+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: chaiBot and Malee Yamazaki\n"
 "Language-Team: Thai\n"
@@ -10,61 +10,185 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: DevOn Addon\n"
+"X-Generator: ChaiBot Addon\n"
 
-#: uTalkCore.py:31
+#: settingsPanel.py:84
+msgid "&Application rules (one per line: name=off, name=main or name=alt):"
+msgstr "&กฎของแอปพลิเคชัน (บรรทัดละ 1 กฎ: name=off, name=main หรือ name=alt):"
+
+#: uTalkCore.py:62
 msgid "...truncated"
 msgstr "...ถูกตัดทอน"
 
-#: settingsPanel.py:33
+#: uTalkCore.py:483
+msgid "Alternate language"
+msgstr "ภาษาสำรอง"
+
+#: settingsPanel.py:57
 msgid "Alternate language code:"
 msgstr "รหัสภาษาสำรอง:"
 
-#: settingsPanel.py:50
+#: uTalkCore.py:505
+msgid "Alternate language is not set. Press the shortcut twice to open the uTalk settings and add phrases."
+msgstr "ยังไม่ได้ตั้งค่าภาษาสำรอง กดปุ่มลัดสองครั้งเพื่อเปิดการตั้งค่า uTalk และเพิ่มวลี"
+
+#: settingsPanel.py:79
+msgid "Announce copy, cut and paste &only when they take effect"
+msgstr "ประกาศการคัดลอก ตัด และวาง &เมื่อดำเนินการสำเร็จเท่านั้น"
+
+#: settingsPanel.py:72
+msgid "Announcement &detail:"
+msgstr "&รายละเอียดการประกาศ:"
+
+#: settingsPanel.py:64
+msgid "Announcement &output:"
+msgstr "&เอาต์พุตการประกาศ:"
+
+#: settingsPanel.py:19
+msgid "Beep only"
+msgstr "ส่งเสียงบี๊บเท่านั้น"
+
+#: settingsPanel.py:18
+msgid "Braille only"
+msgstr "อักษรเบรลล์เท่านั้น"
+
+#: uTalkCore.py:466
+msgid "Cannot detect the current application"
+msgstr "ไม่สามารถตรวจพบแอปพลิเคชันปัจจุบันได้"
+
+#: settingsPanel.py:103
 msgid "Command translations:"
 msgstr "การแปลคำสั่ง:"
 
-#: settingsPanel.py:39
+#: settingsPanel.py:92
 msgid "Copy"
 msgstr "คัดลอก"
 
-#: settingsPanel.py:41
+#: settingsPanel.py:94
 msgid "Copy file"
 msgstr "คัดลอกไฟล์"
 
-#: settingsPanel.py:40
+#: settingsPanel.py:93
 msgid "Copy path"
 msgstr "คัดลอกเส้นทาง"
 
-#: settingsPanel.py:42
+#: uTalkCore.py:477
+msgid "Could not save the application rule"
+msgstr "ไม่สามารถบันทึกกฎของแอปพลิเคชันได้"
+
+#: settingsPanel.py:95
 msgid "Cut"
 msgstr "ตัด"
 
-#: settingsPanel.py:43
+#: settingsPanel.py:26
+msgid "Detailed (adds counts and what undo or redo changed)"
+msgstr "โดยละเอียด (เพิ่มจำนวนและสิ่งที่เลิกทำหรือทำซ้ำเปลี่ยนแปลง)"
+
+#: uTalkCore.py:484
+msgid "English"
+msgstr "ภาษาอังกฤษ"
+
+#: settingsPanel.py:130
+msgid "Invalid configuration"
+msgstr "การกำหนดค่าไม่ถูกต้อง"
+
+#: settingsPanel.py:148
+msgid "Line {line} of the application rules is not valid. Use name=off, name=main or name=alt."
+msgstr "บรรทัดที่ {line} ของกฎแอปพลิเคชันไม่ถูกต้อง ใช้ name=off, name=main หรือ name=alt"
+
+#: uTalkCore.py:449
+msgid "Mute or unmute uTalk announcements"
+msgstr "ปิดหรือเปิดเสียงประกาศของ uTalk"
+
+#: uTalkCore.py:93
+msgid "Nothing to copy"
+msgstr "ไม่มีอะไรให้คัดลอก"
+
+#: uTalkCore.py:92
+msgid "Nothing to cut"
+msgstr "ไม่มีอะไรให้ตัด"
+
+#: settingsPanel.py:96
 msgid "Paste"
 msgstr "วาง"
 
-#: settingsPanel.py:44
+#: settingsPanel.py:97
 msgid "Redo"
 msgstr "ทำซ้ำ"
 
-#: settingsPanel.py:60
+#: settingsPanel.py:115
 msgid "Restore Defaults"
 msgstr "คืนค่าเริ่มต้น"
 
-#: settingsPanel.py:45
+#: settingsPanel.py:98
 msgid "Save"
 msgstr "บันทึก"
 
-#: settingsPanel.py:46
+#: settingsPanel.py:99
 msgid "Select all"
 msgstr "เลือกทั้งหมด"
 
-#: settingsPanel.py:47
+#: settingsPanel.py:25
+msgid "Short"
+msgstr "สั้น"
+
+#: settingsPanel.py:16
+msgid "Speech and braille"
+msgstr "เสียงพูดและอักษรเบรลล์"
+
+#: settingsPanel.py:17
+msgid "Speech only"
+msgstr "เสียงพูดเท่านั้น"
+
+#: settingsPanel.py:134
+msgid "The text is longer than {limit} characters. Shorten it before saving."
+msgstr "ข้อความยาวเกิน {limit} ตัวอักษร โปรดทำให้สั้นลงก่อนบันทึก"
+
+#: uTalkCore.py:459
+msgid "Turn uTalk off or on for the current application"
+msgstr "ปิดหรือเปิด uTalk สำหรับแอปพลิเคชันปัจจุบัน"
+
+#: settingsPanel.py:100
 msgid "Undo"
 msgstr "เลิกทำ"
 
-#: settingsPanel.py:14
-#: uTalkCore.py:36
+#: uTalkCore.py:134
+msgid "added {text}"
+msgstr "เพิ่ม {text} แล้ว"
+
+#: uTalkCore.py:132
+msgid "removed {text}"
+msgstr "ลบ {text} แล้ว"
+
+#: uTalkCore.py:127
+msgid "replaced {removed} with {added}"
+msgstr "แทนที่ {removed} ด้วย {added}"
+
+#: settingsPanel.py:38
+#: uTalkCore.py:139
 msgid "uTalk"
 msgstr "uTalk"
+
+#: uTalkCore.py:436
+msgid "uTalk multi tap. Once: swap languages. Twice: open settings. Three times: turn uTalk off or on for the current application. Four times: mute or unmute uTalk announcements"
+msgstr "uTalk มัลติแทป ครั้งเดียว: สลับภาษา สองครั้ง: เปิดการตั้งค่า สามครั้ง: ปิดหรือเปิด uTalk สำหรับแอปพลิเคชันปัจจุบัน สี่ครั้ง: ปิดหรือเปิดเสียงประกาศของ uTalk"
+
+#: uTalkCore.py:457
+msgid "uTalk muted"
+msgstr "ปิดเสียง uTalk แล้ว"
+
+#: uTalkCore.py:474
+msgid "uTalk off for {appName}"
+msgstr "ปิด uTalk สำหรับ {appName} แล้ว"
+
+#: uTalkCore.py:471
+msgid "uTalk on for {appName}"
+msgstr "เปิด uTalk สำหรับ {appName} แล้ว"
+
+#: uTalkCore.py:457
+msgid "uTalk unmuted"
+msgstr "เปิดเสียง uTalk แล้ว"
+
+#: uTalkCore.py:109
+msgid "whitespace"
+msgstr "ช่องว่าง"

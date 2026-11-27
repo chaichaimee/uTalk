@@ -67,7 +67,7 @@ b {
     <img src="https://www.nvaccess.org/files/nvda/documentation/userGuide/images/nvda.ico" alt="NVDA Logo" class="nvda-logo">
     <h1>uTalk</h1>
     <br>
-    <p style="text-align: center;">Hear every Copy, Paste, Cut, Undo and Save as it happens &mdash; in the words you choose.</p>
+    <p style="text-align: center;">Hear every Copy, Paste, Undo and Save confirmed, in your language, only when it really happened.</p>
 </div>
 <br>
 <div class="section">
@@ -79,145 +79,166 @@ b {
 <div class="section">
 <h2>Introduction</h2>
 <br>
-<p>uTalk speaks a short confirmation every time you use a common editing shortcut &mdash; Copy, Paste, Cut, Undo, Redo, Select All, Save, Copy Path, and Copy File. Instead of wondering whether your Ctrl+C actually worked, uTalk quietly announces "copy" (or whatever word you prefer) right after the action happens.</p>
+<p>uTalk gives you instant spoken confirmation for the editing commands you use every day: Copy, Cut, Paste, Undo, Redo, Select All, Save, Copy as path and Copy file. Instead of wondering whether a shortcut worked, you hear it.</p>
 <br>
-<p>Every announced word can be replaced with your own text, and you can even keep two full sets of announcements &mdash; for example English and your native language &mdash; and switch between them instantly with a single hotkey tap.</p>
-<br>
-<p>uTalk also pays special attention to copying selected text while browsing the web in NVDA's Browse Mode, where a normal Ctrl+C often fails silently because the selection only exists inside NVDA's virtual buffer.</p>
+<p>uTalk checks that the action really took effect before it speaks, so you are not told "copy" when nothing was copied. It works with two language profiles that you can swap with a single key press, lets you set different behavior for each application, and lets you choose whether confirmations come as speech, braille or a short beep. Every phrase can be changed to your own wording.</p>
 </div>
 <br>
 
 <div class="section">
 <h3>Hot Keys</h3>
-<br>
 <div class="hotkey">
 <b>NVDA+Alt+T</b><br>
-Single Tap : Toggle between English and your alternate language for all announcements<br>
-Double Tap : Open the uTalk Settings panel
+Single Tap : Swap between the main language and the alternate language<br>
+Double Tap : Open uTalk settings<br>
+Triple Tap : Turn uTalk off or on for the current application<br>
+Four Taps : Mute or unmute uTalk announcements
 </div>
-<br>
-<div class="hotkey">
-<b>Control+C</b><br>
-Single Tap : Copy, then announce "copy" (or your custom word)
-</div>
-<br>
-<div class="hotkey">
-<b>Control+V</b><br>
-Single Tap : Paste, then announce "paste"
-</div>
-<br>
-<div class="hotkey">
-<b>Control+X</b><br>
-Single Tap : Cut, then announce "cut"
-</div>
-<br>
-<div class="hotkey">
-<b>Control+Z</b><br>
-Single Tap : Undo, then announce "undo"
-</div>
-<br>
-<div class="hotkey">
-<b>Control+Y or Control+Shift+Z</b><br>
-Single Tap : Redo, then announce "redo"
-</div>
-<br>
-<div class="hotkey">
-<b>Control+A</b><br>
-Single Tap : Select all, then announce "select all"
-</div>
-<br>
-<div class="hotkey">
-<b>Control+S</b><br>
-Single Tap : Save, then announce "save"
-</div>
-<br>
-<div class="hotkey">
-<b>Control+Shift+C</b><br>
-Single Tap : Announce "copy as path" (Windows Explorer only), then perform the shortcut
-</div>
-<br>
-<div class="hotkey">
-<b>Control+Alt+C</b><br>
-Single Tap : Announce "copy file" (Windows Explorer only), then perform the shortcut
-</div>
-<br>
 <div class="note">
-uTalk listens to these standard Windows shortcuts directly. Your shortcut always still runs as normal &mdash; uTalk only adds a spoken confirmation on top of it.
+The mute command and the current application command can also be given their own keys. Open NVDA menu &gt; Preferences &gt; Input Gestures, find the uTalk category, and assign a key to "Mute or unmute uTalk announcements" or "Turn uTalk off or on for the current application". The multi tap command appears there as "uTalk multi tap".
 </div>
+<br>
+<p><b>Keys that uTalk announces</b></p>
+<div class="hotkey">
+<b>Control+C</b> : Copy<br>
+<b>Control+X</b> : Cut<br>
+<b>Control+V</b> : Paste<br>
+<b>Control+Z</b> : Undo<br>
+<b>Control+Y</b> or <b>Control+Shift+Z</b> : Redo<br>
+<b>Control+A</b> : Select all<br>
+<b>Control+S</b> : Save<br>
+<b>Control+Shift+C</b> : Copy as path (announced in File Explorer only)<br>
+<b>Control+Alt+C</b> : Copy file (announced in File Explorer only)
+</div>
+<p>uTalk passes each of these keys on to the application as usual. It only adds the announcement.</p>
 </div>
 <br>
 
 <div class="section">
-<h2>Features</h2>
+<h3>Features</h3>
+<br>
 
 <div class="feature-item">
-<h3>1. Spoken Confirmation for Everyday Commands</h3>
+<h3>Smart Copy and Cut Confirmation</h3>
+<p>After you press Control+C or Control+X, uTalk waits to see whether the clipboard actually changed. If it did, you hear "copy" or "cut". If nothing was placed on the clipboard, you hear "Nothing to copy" or "Nothing to cut" instead.</p>
 <br>
-<p>Whenever you press Ctrl+C, Ctrl+V, Ctrl+X, Ctrl+Z, Ctrl+Y (or Ctrl+Shift+Z), Ctrl+A, or Ctrl+S, uTalk lets the keystroke through to the application first and then, shortly afterward, speaks a short word confirming what happened. By default the words are plain English: "copy", "paste", "cut", "undo", "redo", "select all", and "save".</p>
+<p><b>Example:</b> You press Control+C with nothing selected. uTalk says "Nothing to copy" rather than confirming a copy that never happened.</p>
 <br>
-<p>To keep NVDA responsive, announcements are never spoken instantly on the keystroke itself &mdash; uTalk waits a fraction of a second (100 milliseconds) before speaking, so the application has time to actually finish the action first.</p>
+<p>Paste is announced only where pasting is possible. In browse mode and in read-only fields, Control+V is not announced.</p>
 <br>
-<p>As a safety measure, any announced text is capped at 200 characters; if you ever configure a very long custom phrase, it will be cut short with "...truncated" added at the end so it can never overwhelm the speech output.</p>
+<p>You can turn this checking off with the option "Announce copy, cut and paste only when they take effect" in the settings. When it is off, the command name is always announced.</p>
 </div>
+<br>
 
 <div class="feature-item">
-<h3>2. Smart Copy Handling in Browse Mode</h3>
-<br>
-<p>Copying text while reading a web page in NVDA's Browse Mode works differently from copying in a normal editable field, and uTalk handles both cases correctly:</p>
-<br>
-<p><b>Step by step, when you press Control+C:</b></p>
-<br>
-<p>1. uTalk checks whether your current focus is inside a Browse Mode virtual document (for example, a web page in a browser).</p>
-<br>
-<p>2. If you <b>are</b> in Browse Mode: a text selection made with Shift+Arrow keys exists only inside NVDA's own virtual buffer, not as a real selection in the browser itself. Sending the normal Ctrl+C in this situation would copy nothing at all. So instead, uTalk reads the selected text directly from NVDA's virtual buffer and places it on the clipboard itself using NVDA's own clipboard function. If no text is selected, it simply forwards your Ctrl+C as normal.</p>
-<br>
-<p>3. If you are <b>not</b> in Browse Mode (for example, typing in a text box or word processor): a real, OS-level selection already exists, so uTalk forwards your Ctrl+C to the application first, letting the application perform its own copy (this preserves any special formatting the application itself would normally copy).</p>
-<br>
-<p>4. In both cases, once the copy is done, uTalk announces "copy" (or your custom word).</p>
+<h3>Copying in Browse Mode</h3>
+<p>On web pages and other documents in browse mode, a selection exists only inside NVDA, so the application would copy nothing. uTalk copies your selected text for you, so Control+C works in browse mode and is confirmed like any other copy.</p>
 </div>
+<br>
 
 <div class="feature-item">
-<h3>3. Explorer-Only Announcements for Copy Path and Copy File</h3>
-<br>
-<p>Windows Explorer has two extra shortcuts that do not exist in most other programs: Copy as Path (Ctrl+Shift+C) and Copy File (Ctrl+Alt+C). uTalk checks whether the currently focused window actually belongs to Windows Explorer before announcing these two commands, so you will only hear "copy as path" or "copy file" while working in Explorer itself, never in other applications where those same key combinations might mean something else.</p>
+<h3>One Announcement per Action</h3>
+<p>If you hold a shortcut down or press it repeatedly and quickly, uTalk gives you a single announcement instead of a long queue of repeated messages.</p>
 </div>
+<br>
 
 <div class="feature-item">
-<h3>4. One Hotkey, Two Jobs: Language Toggle and Settings Access</h3>
+<h3>Dual Language Profiles</h3>
+<p>uTalk keeps two sets of phrases: the main language (English) and an alternate language of your choice. Press NVDA+Alt+T once to swap between them. uTalk announces the name of the language you switched to. NVDA remembers which language you used last.</p>
 <br>
+<p>If a command has no alternate phrase, uTalk uses its English phrase. If you press the swap key before setting up any alternate phrase, uTalk tells you that the alternate language is not set and reminds you to open the settings.</p>
+<br>
+<p><b>How to set up the alternate language:</b></p>
 <div class="tap-explanation">
-<p>NVDA+Alt+T is a single hotkey that behaves differently depending on how many times you tap it in quick succession:</p>
-<br>
-<p><b>Single Tap</b> &mdash; uTalk waits up to 500 milliseconds to see if you will tap again. If you don't, it switches your active announcement language (English or your alternate language) and immediately speaks the new language's name aloud as confirmation, then saves this choice so it is remembered the next time you start NVDA.</p>
-<br>
-<p><b>Double Tap</b> (or more) &mdash; If a second tap arrives within 600 milliseconds of the first, uTalk instead opens the NVDA Settings dialog directly to the uTalk category, so you can edit your custom phrases.</p>
-<br>
-<p>Internally, every tap resets a short timer; only once the timer expires without another tap does uTalk decide what actually happened, which is what allows one hotkey to distinguish a single tap from a double tap.</p>
+1. Press NVDA+Alt+T twice to open the uTalk settings.<br>
+2. In "Alternate language code", type the name you want to hear when you switch to this language.<br>
+3. In the "Command translations" fields, type your own phrase for each command: Copy, Copy path, Copy file, Cut, Paste, Redo, Save, Select all and Undo.<br>
+4. Activate OK to save.<br>
+5. Press NVDA+Alt+T once to start using the alternate language.
 </div>
 </div>
+<br>
 
 <div class="feature-item">
-<h3>5. Fully Customizable Command Phrases</h3>
+<h3>Output Choices</h3>
+<p>Choose how uTalk gives you its confirmations in the "Announcement output" list:</p>
 <br>
-<p>Opening the uTalk Settings panel (via NVDA's own Settings dialog, or by double-tapping NVDA+Alt+T) gives you a text field for an alternate language name, plus one text field for each command: Copy, Copy Path, Copy File, Cut, Paste, Redo, Save, Select All, and Undo. Whatever you type in these fields becomes what NVDA speaks for that command when your alternate language is active.</p>
+<p>
+- Speech and braille<br>
+- Speech only<br>
+- Braille only<br>
+- Beep only
+</p>
 <br>
-<p>A "Restore Defaults" button clears every field back to blank, matching uTalk's built-in defaults.</p>
-<br>
-<p>Saving your changes updates the running add-on immediately (no restart needed) and speaks a quick confirmation in the currently active language.</p>
-<br>
-<div class="note">
-To keep the Settings dialog from ever freezing while it opens, the panel reads its current values from the add-on's in-memory settings rather than reading the configuration file from disk at that moment.
+<p>With "Beep only", each command has its own tone, so you can tell Copy from Paste or Save by pitch alone. A lower error tone is played when there was nothing to copy or cut.</p>
 </div>
-</div>
+<br>
 
 <div class="feature-item">
-<h3>6. Reliable Settings Storage</h3>
+<h3>Announcement Detail</h3>
+<p>The "Announcement detail" list has two levels: Short and Detailed.</p>
 <br>
-<p>Your customized phrases are saved to a configuration file in your NVDA user configuration folder, inside a "ChaiChaimee" subfolder. Saving is done safely: uTalk first writes your settings to a temporary file, then swaps it into place, and finally re-reads the saved file to confirm it matches exactly what was meant to be saved &mdash; protecting your settings from being lost or corrupted if something interrupts the save.</p>
+<p><b>Short</b> says only the command name, for example "copy".</p>
 <br>
-<p>If you have an older version of uTalk that stored its settings in a different location, uTalk automatically moves your existing settings the first time it loads, so you don't lose your customizations when updating.</p>
+<p><b>Detailed</b> adds more information:</p>
+<br>
+<p>
+- Copy, cut and paste report the number of characters, and the number of lines when there is more than one line. For example: "copy 2 lines 50 characters". A line break at the very end of the text is not counted as an extra line.<br>
+- In editable fields, undo and redo tell you what changed, for example "undo removed hello", "redo added world" or "undo replaced cat with dog". Long pieces of text are shortened, and text that is only spaces is described as "whitespace".
+</p>
+<br>
+<p>Detailed information is not used with "Beep only". For very large texts, and in applications that read text too slowly, undo and redo give the plain command name.</p>
 </div>
+<br>
 
+<div class="feature-item">
+<h3>Per-Application Rules</h3>
+<p>You can decide how uTalk behaves in each application. Each rule has the form <b>name=value</b>, one per line, where name is the program name (the ".exe" ending is optional and capital letters do not matter) and value is one of:</p>
+<br>
+<p>
+- <b>off</b> : uTalk stays silent in that application<br>
+- <b>main</b> : always use the main language phrases in that application<br>
+- <b>alt</b> : always use the alternate language phrases in that application
+</p>
+<br>
+<p>By default uTalk is silent in Command Prompt, PowerShell and Windows Terminal. Applications without a rule follow the language you selected with NVDA+Alt+T.</p>
+<br>
+<p><b>How to add a rule:</b></p>
+<div class="tap-explanation">
+1. Press NVDA+Alt+T twice to open the uTalk settings.<br>
+2. Move to the "Application rules" field.<br>
+3. Type a new line, for example: notepad=alt<br>
+4. Activate OK to save.
+</div>
+<br>
+<p><b>Quick switch for the current application:</b> Press NVDA+Alt+T three times while working in an application. uTalk adds or removes an "off" rule for it and tells you, for example, "uTalk off for notepad" or "uTalk on for notepad". The change is saved automatically.</p>
+</div>
+<br>
+
+<div class="feature-item">
+<h3>Mute</h3>
+<p>Press NVDA+Alt+T four times to mute all uTalk announcements, and press it four times again to unmute. Muting also cancels any announcement that is waiting to be spoken.</p>
+</div>
+<br>
+
+<div class="feature-item">
+<h3>Customizable Phrases</h3>
+<p>The main language phrases are Copy, Copy as path, Copy file, Cut, Paste, Redo, Save, Select all and Undo. Each one has an alternate field in the settings where you can write your own wording. Each phrase can be up to 200 characters.</p>
+</div>
+<br>
+
+<div class="feature-item">
+<h3>Safe Settings</h3>
+<p>The settings dialog protects you from mistakes:</p>
+<br>
+<p>
+- Text longer than 200 characters is refused, and uTalk tells you which field to shorten.<br>
+- An application rule that is not valid is refused, and uTalk tells you which line to correct. Use name=off, name=main or name=alt.<br>
+- The "Restore Defaults" button returns every setting to its original value.
+</p>
+<br>
+<p>Your settings are stored in the file uTalk.json in userConfig\ChaiChaimee\uTalk\. If you used an older version of uTalk, your existing settings file is moved to this location automatically when NVDA starts, and the old copy is removed once the new one is checked. If a value in the file is of the wrong type, uTalk replaces it with the default value.</p>
+</div>
 </div>
 
 <br><br>

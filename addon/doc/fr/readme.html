@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>uTalk NVDA Add-on</title>
+<title>Extension NVDA uTalk</title>
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -64,176 +64,197 @@ b {
 <div class="container">
 
 <div class="section">
-    <img src="https://www.nvaccess.org/files/nvda/documentation/userGuide/images/nvda.ico" alt="NVDA Logo" class="nvda-logo">
+    <img src="https://www.nvaccess.org/files/nvda/documentation/userGuide/images/nvda.ico" alt="Logo NVDA" class="nvda-logo">
     <h1>uTalk</h1>
     <br>
-    <p style="text-align: center;">Écoutez chaque action de Copier, Coller, Couper, Annuler et Enregistrer en temps réel &mdash; dans les mots de votre choix.</p>
+    <p style="text-align: center;">Entendez chaque confirmation de Copier, Coller, Annuler et Enregistrer, dans votre langue, uniquement lorsqu’elle s’est vraiment produite.</p>
 </div>
 <br>
 <div class="section">
-    <p style="text-align: center;"><b>auteur :</b> chai chaimee</p>
-    <p style="text-align: center;"><b>url :</b> https://github.com/chaichaimee/uTalk</p>
+    <p style="text-align: center;"><b>Auteur :</b> chai chaimee</p>
+    <p style="text-align: center;"><b>URL :</b> https://github.com/chaichaimee/uTalk</p>
 </div>
 <br>
 
 <div class="section">
 <h2>Introduction</h2>
 <br>
-<p>uTalk énonce une courte confirmation chaque fois que vous utilisez un raccourci d'édition courant &mdash; Copier, Coller, Couper, Annuler, Rétablir, Tout sélectionner, Enregistrer, Copier le chemin et Copier le fichier. Au lieu de vous demander si votre Ctrl+C a réellement fonctionné, uTalk annonce discrètement "copier" (ou tout autre mot de votre choix) juste après l'action.</p>
+<p>uTalk vous donne une confirmation vocale instantanée pour les commandes d’édition que vous utilisez tous les jours : Copier, Couper, Coller, Annuler, Rétablir, Sélectionner tout, Enregistrer, Copier en tant que chemin et Copier le fichier. Au lieu de vous demander si un raccourci a fonctionné, vous l’entendez.</p>
 <br>
-<p>Chaque mot annoncé peut être remplacé par votre propre texte, et vous pouvez même conserver deux ensembles complets d'annonces &mdash; par exemple l'anglais et votre langue maternelle &mdash; et basculer instantanément entre eux d'un simple appui sur une touche.</p>
-<br>
-<p>uTalk accorde également une attention particulière à la copie de texte sélectionné lors de la navigation sur le Web en Mode navigation de NVDA, où un Ctrl+C normal échoue souvent silencieusement car la sélection n'existe que dans le tampon virtuel de NVDA.</p>
+<p>uTalk vérifie que l’action a réellement pris effet avant de parler, afin de ne pas vous dire « copier » lorsque rien n’a été copié. Il fonctionne avec deux profils de langue entre lesquels vous pouvez basculer d’une seule pression, permet de définir un comportement différent pour chaque application et vous laisse choisir si les confirmations arrivent sous forme de synthèse vocale, de braille ou d’un bref bip. Chaque formule peut être modifiée selon vos propres termes.</p>
 </div>
 <br>
 
 <div class="section">
 <h3>Raccourcis clavier</h3>
-<br>
 <div class="hotkey">
 <b>NVDA+Alt+T</b><br>
-Appui simple : Basculer entre l'anglais et votre langue alternative pour toutes les annonces<br>
-Double appui : Ouvrir le panneau des paramètres de uTalk
+Appui simple : Basculer entre la langue principale et la langue alternative<br>
+Double appui : Ouvrir les paramètres d’uTalk<br>
+Triple appui : Activer ou désactiver uTalk pour l’application active<br>
+Quadruple appui : Couper ou rétablir les annonces d’uTalk
 </div>
-<br>
-<div class="hotkey">
-<b>Contrôle+C</b><br>
-Appui simple : Copier, puis annoncer "copier" (ou votre mot personnalisé)
-</div>
-<br>
-<div class="hotkey">
-<b>Contrôle+V</b><br>
-Appui simple : Coller, puis annoncer "coller"
-</div>
-<br>
-<div class="hotkey">
-<b>Contrôle+X</b><br>
-Appui simple : Couper, puis annoncer "couper"
-</div>
-<br>
-<div class="hotkey">
-<b>Contrôle+Z</b><br>
-Appui simple : Annuler, puis annoncer "annuler"
-</div>
-<br>
-<div class="hotkey">
-<b>Contrôle+Y ou Contrôle+Maj+Z</b><br>
-Appui simple : Rétablir, puis annoncer "rétablir"
-</div>
-<br>
-<div class="hotkey">
-<b>Contrôle+A</b><br>
-Appui simple : Tout sélectionner, puis annoncer "tout sélectionner"
-</div>
-<br>
-<div class="hotkey">
-<b>Contrôle+S</b><br>
-Appui simple : Enregistrer, puis annoncer "enregistrer"
-</div>
-<br>
-<div class="hotkey">
-<b>Contrôle+Maj+C</b><br>
-Appui simple : Annoncer "copier comme chemin" (Explorateur Windows uniquement), puis exécuter le raccourci
-</div>
-<br>
-<div class="hotkey">
-<b>Contrôle+Alt+C</b><br>
-Appui simple : Annoncer "copier le fichier" (Explorateur Windows uniquement), puis exécuter le raccourci
-</div>
-<br>
 <div class="note">
-uTalk écoute directement ces raccourcis Windows standard. Votre raccourci continue toujours de fonctionner normalement &mdash; uTalk ajoute simplement une confirmation vocale par-dessus.
+La commande de coupure du son et la commande pour l’application active peuvent également se voir attribuer leurs propres touches. Ouvrez le menu NVDA &gt; Préférences &gt; Gestes de commandes, recherchez la catégorie uTalk et attribuez une touche à « Mute or unmute uTalk announcements » ou « Turn uTalk off or on for the current application ». La commande à appuis multiples y apparaît sous le nom « uTalk multi tap ».
 </div>
+<br>
+<p><b>Touches annoncées par uTalk</b></p>
+<div class="hotkey">
+<b>Contrôle+C</b> : Copier<br>
+<b>Contrôle+X</b> : Couper<br>
+<b>Contrôle+V</b> : Coller<br>
+<b>Contrôle+Z</b> : Annuler<br>
+<b>Contrôle+Y</b> ou <b>Contrôle+Maj+Z</b> : Rétablir<br>
+<b>Contrôle+A</b> : Sélectionner tout<br>
+<b>Contrôle+S</b> : Enregistrer<br>
+<b>Contrôle+Maj+C</b> : Copier en tant que chemin (annoncé uniquement dans l’Explorateur de fichiers)<br>
+<b>Contrôle+Alt+C</b> : Copier le fichier (annoncé uniquement dans l’Explorateur de fichiers)
+</div>
+<p>uTalk transmet chacune de ces touches à l’application comme d’habitude. Il ajoute uniquement l’annonce.</p>
 </div>
 <br>
 
 <div class="section">
-<h2>Fonctionnalités</h2>
+<h3>Fonctionnalités</h3>
+<br>
 
 <div class="feature-item">
-<h3>1. Confirmation vocale pour les commandes quotidiennes</h3>
+<h3>Confirmation intelligente de Copier et Couper</h3>
+<p>Après avoir appuyé sur Contrôle+C ou Contrôle+X, uTalk attend pour vérifier si le presse-papiers a réellement changé. Si c’est le cas, vous entendez « copier » ou « couper ». Si rien n’a été placé dans le presse-papiers, vous entendez à la place « Rien à copier » ou « Rien à couper ».</p>
 <br>
-<p>Chaque fois que vous appuyez sur Ctrl+C, Ctrl+V, Ctrl+X, Ctrl+Z, Ctrl+Y (ou Ctrl+Maj+Z), Ctrl+A ou Ctrl+S, uTalk laisse passer la frappe vers l'application en premier, puis énonce un mot bref confirmant ce qui s'est passé. Par défaut, les mots sont en anglais simple : "copy", "paste", "cut", "undo", "redo", "select all" et "save".</p>
+<p><b>Exemple :</b> Vous appuyez sur Contrôle+C sans rien avoir sélectionné. uTalk dit « Rien à copier » au lieu de confirmer une copie qui n’a jamais eu lieu.</p>
 <br>
-<p>Pour que NVDA reste réactif, les annonces ne sont jamais prononcées instantanément lors de la frappe &mdash; uTalk attend une fraction de seconde (100 millisecondes) avant de parler, afin que l'application ait le temps de terminer l'action.</p>
+<p>Coller n’est annoncé que là où le collage est possible. En mode navigation et dans les champs en lecture seule, Contrôle+V n’est pas annoncé.</p>
 <br>
-<p>Par mesure de sécurité, tout texte annoncé est limité à 200 caractères ; si vous configurez une phrase personnalisée très longue, elle sera raccourcie avec "...tronqué" à la fin.</p>
+<p>Vous pouvez désactiver cette vérification avec l’option « Announce copy, cut and paste only when they take effect » dans les paramètres. Lorsqu’elle est désactivée, le nom de la commande est toujours annoncé.</p>
 </div>
+<br>
 
 <div class="feature-item">
-<h3>2. Gestion intelligente de la copie en Mode navigation</h3>
-<br>
-<p>La copie de texte lors de la lecture d'une page Web en Mode navigation de NVDA fonctionne différemment de la copie dans un champ éditable normal, et uTalk gère correctement les deux cas :</p>
-<br>
-<p><b>Étape par étape, lorsque vous appuyez sur Contrôle+C :</b></p>
-<br>
-<p>1. uTalk vérifie si votre focus actuel se trouve dans un document virtuel du Mode navigation (par exemple, une page Web).</p>
-<br>
-<p>2. Si vous <b>êtes</b> en Mode navigation : une sélection de texte effectuée avec Maj+Touches fléchées n'existe que dans le tampon virtuel de NVDA. uTalk lit le texte sélectionné directement depuis le tampon virtuel et le place dans le presse-papiers à l'aide de la fonction de NVDA.</p>
-<br>
-<p>3. Si vous n'êtes <b>pas</b> en Mode navigation (par exemple, lors de la saisie dans un champ de texte) : une sélection réelle au niveau du système d'exploitation existe déjà, uTalk transmet donc votre Ctrl+C à l'application.</p>
-<br>
-<p>4. Dans les deux cas, une fois la copie effectuée, uTalk annonce "copier" (ou votre mot personnalisé).</p>
+<h3>Copier en mode navigation</h3>
+<p>Sur les pages web et d’autres documents en mode navigation, une sélection n’existe qu’à l’intérieur de NVDA, de sorte que l’application ne copierait rien. uTalk copie votre texte sélectionné à votre place, afin que Contrôle+C fonctionne en mode navigation et soit confirmé comme n’importe quelle autre copie.</p>
 </div>
+<br>
 
 <div class="feature-item">
-<h3>3. Annonces spécifiques à l'Explorateur pour Copier le chemin et Copier le fichier</h3>
-<br>
-<p>L'Explorateur Windows possède deux raccourcis supplémentaires : Copier en tant que chemin (Ctrl+Maj+C) et Copier le fichier (Ctrl+Alt+C). uTalk vérifie si la fenêtre active appartient à l'Explorateur Windows avant d'annoncer ces commandes.</p>
+<h3>Une annonce par action</h3>
+<p>Si vous maintenez un raccourci enfoncé ou si vous appuyez dessus rapidement et à plusieurs reprises, uTalk vous donne une seule annonce au lieu d’une longue file de messages répétés.</p>
 </div>
+<br>
 
 <div class="feature-item">
-<h3>4. Un raccourci, deux fonctions : Basculement de langue et accès aux paramètres</h3>
+<h3>Profils à deux langues</h3>
+<p>uTalk conserve deux ensembles de formules : la langue principale (anglais) et une langue alternative de votre choix. Appuyez une fois sur NVDA+Alt+T pour basculer entre les deux. uTalk annonce le nom de la langue vers laquelle vous avez basculé. NVDA mémorise la dernière langue utilisée.</p>
 <br>
+<p>Si une commande n’a pas de formule alternative, uTalk utilise sa formule anglaise. Si vous appuyez sur la touche de bascule avant d’avoir configuré une formule alternative, uTalk vous indique que la langue alternative n’est pas définie et vous rappelle d’ouvrir les paramètres.</p>
+<br>
+<p><b>Comment configurer la langue alternative :</b></p>
 <div class="tap-explanation">
-<p>NVDA+Alt+T est un raccourci unique qui se comporte différemment selon le nombre de pressions successives :</p>
-<br>
-<p><b>Appui simple</b> &mdash; uTalk attend jusqu'u à 500 millisecondes pour voir si vous effectuez un autre appui. Si ce n'est pas le cas, il change votre langue d'annonce active et énonce immédiatement le nom de la nouvelle langue.</p>
-<br>
-<p><b>Double appui</b> (ou plus) &mdash; Si un deuxième appui arrive dans les 600 millisecondes, uTalk ouvre la boîte de dialogue des Paramètres de NVDA directement sur la catégorie uTalk.</p>
-<br>
-<p>En interne, chaque appui réinitialise un court temporisateur pour distinguer un appui simple d'un double appui.</p>
+1. Appuyez deux fois sur NVDA+Alt+T pour ouvrir les paramètres d’uTalk.<br>
+2. Dans « Alternate language code », saisissez le nom que vous souhaitez entendre lorsque vous passez à cette langue.<br>
+3. Dans les champs « Command translations », saisissez votre propre formule pour chaque commande : Copier, Copier le chemin, Copier le fichier, Couper, Coller, Rétablir, Enregistrer, Sélectionner tout et Annuler.<br>
+4. Activez OK pour enregistrer.<br>
+5. Appuyez une fois sur NVDA+Alt+T pour commencer à utiliser la langue alternative.
 </div>
 </div>
+<br>
 
 <div class="feature-item">
-<h3>5. Phrases de commande entièrement personnalisables</h3>
+<h3>Choix de sortie</h3>
+<p>Choisissez comment uTalk vous fournit ses confirmations dans la liste « Announcement output » :</p>
 <br>
-<p>L'ouverture du panneau des paramètres de uTalk vous offre un champ de texte pour le nom d'une langue alternative, ainsi qu'un champ pour chaque commande. Tout ce que vous tapez dans ces champs devient ce que NVDA prononce pour cette commande.</p>
+<p>
+- Synthèse vocale et braille<br>
+- Synthèse vocale uniquement<br>
+- Braille uniquement<br>
+- Bip uniquement
+</p>
 <br>
-<p>Un bouton "Restaurer les valeurs par défaut" réinitialise tous les champs.</p>
-<br>
-<p>L'enregistrement de vos modifications met à jour le module complémentaire en cours d'exécution immédiatement.</p>
-<br>
-<div class="note">
-Pour éviter que la boîte de dialogue des paramètres ne se fige à l'ouverture, le panneau lit ses valeurs actuelles à partir des paramètres en mémoire du module.
+<p>Avec « Bip uniquement », chaque commande a sa propre tonalité, afin que vous puissiez distinguer Copier de Coller ou Enregistrer uniquement par la hauteur du son. Une tonalité d’erreur plus grave est jouée lorsqu’il n’y avait rien à copier ou à couper.</p>
 </div>
-</div>
+<br>
 
 <div class="feature-item">
-<h3>6. Stockage fiable des paramètres</h3>
+<h3>Niveau de détail des annonces</h3>
+<p>La liste « Announcement detail » comporte deux niveaux : Court et Détaillé.</p>
 <br>
-<p>Vos phrases personnalisées sont enregistrées dans un fichier de configuration dans votre dossier de configuration utilisateur NVDA, dans un sous-dossier "ChaiChaimee" de manière sécurisée.</p>
+<p><b>Court</b> indique uniquement le nom de la commande, par exemple « copier ».</p>
 <br>
-<p>Si vous possédez une ancienne version de uTalk, le module déplace automatiquement vos paramètres existants lors du premier chargement.</p>
+<p><b>Détaillé</b> ajoute davantage d’informations :</p>
+<br>
+<p>
+- Copier, couper et coller signalent le nombre de caractères, ainsi que le nombre de lignes lorsqu’il y en a plus d’une. Par exemple : « copier 2 lignes 50 caractères ». Un saut de ligne tout à la fin du texte n’est pas compté comme une ligne supplémentaire.<br>
+- Dans les champs modifiables, annuler et rétablir vous indiquent ce qui a changé, par exemple « annuler a supprimé hello », « rétablir a ajouté world » ou « annuler a remplacé cat par dog ». Les longs extraits de texte sont raccourcis, et le texte composé uniquement d’espaces est décrit comme « whitespace ».
+</p>
+<br>
+<p>Les informations détaillées ne sont pas utilisées avec « Bip uniquement ». Pour les très longs textes et dans les applications qui lisent le texte trop lentement, annuler et rétablir indiquent uniquement le nom brut de la commande.</p>
 </div>
+<br>
 
+<div class="feature-item">
+<h3>Règles par application</h3>
+<p>Vous pouvez décider comment uTalk se comporte dans chaque application. Chaque règle a la forme <b>nom=valeur</b>, une par ligne, où nom est le nom du programme (la terminaison « .exe » est facultative et la casse n’a pas d’importance) et valeur est l’un des éléments suivants :</p>
+<br>
+<p>
+- <b>off</b> : uTalk reste silencieux dans cette application<br>
+- <b>main</b> : utiliser toujours les formules de la langue principale dans cette application<br>
+- <b>alt</b> : utiliser toujours les formules de la langue alternative dans cette application
+</p>
+<br>
+<p>Par défaut, uTalk est silencieux dans l’Invite de commandes, PowerShell et Windows Terminal. Les applications sans règle suivent la langue que vous avez sélectionnée avec NVDA+Alt+T.</p>
+<br>
+<p><b>Comment ajouter une règle :</b></p>
+<div class="tap-explanation">
+1. Appuyez deux fois sur NVDA+Alt+T pour ouvrir les paramètres d’uTalk.<br>
+2. Déplacez-vous vers le champ « Application rules ».<br>
+3. Saisissez une nouvelle ligne, par exemple : notepad=alt<br>
+4. Activez OK pour enregistrer.
+</div>
+<br>
+<p><b>Bascule rapide pour l’application active :</b> Appuyez trois fois sur NVDA+Alt+T tout en travaillant dans une application. uTalk ajoute ou supprime une règle « off » pour celle-ci et vous l’indique, par exemple « uTalk off for notepad » ou « uTalk on for notepad ». La modification est enregistrée automatiquement.</p>
+</div>
+<br>
+
+<div class="feature-item">
+<h3>Couper le son</h3>
+<p>Appuyez quatre fois sur NVDA+Alt+T pour couper toutes les annonces d’uTalk, et appuyez à nouveau quatre fois pour rétablir le son. Couper le son annule également toute annonce en attente d’être prononcée.</p>
+</div>
+<br>
+
+<div class="feature-item">
+<h3>Formules personnalisables</h3>
+<p>Les formules de la langue principale sont Copier, Copier en tant que chemin, Copier le fichier, Couper, Coller, Rétablir, Enregistrer, Sélectionner tout et Annuler. Chacune dispose d’un champ alternatif dans les paramètres où vous pouvez écrire vos propres termes. Chaque formule peut contenir jusqu’à 200 caractères.</p>
+</div>
+<br>
+
+<div class="feature-item">
+<h3>Paramètres sécurisés</h3>
+<p>La boîte de dialogue des paramètres vous protège contre les erreurs :</p>
+<br>
+<p>
+- Tout texte dépassant 200 caractères est refusé, et uTalk vous indique quel champ raccourcir.<br>
+- Une règle d’application non valide est refusée, et uTalk vous indique quelle ligne corriger. Utilisez nom=off, nom=main ou nom=alt.<br>
+- Le bouton « Restore Defaults » rétablit chaque paramètre à sa valeur d’origine.
+</p>
+<br>
+<p>Vos paramètres sont enregistrés dans le fichier uTalk.json situé dans userConfig\ChaiChaimee\uTalk\. Si vous avez utilisé une version antérieure d’uTalk, votre fichier de paramètres existant est déplacé automatiquement vers cet emplacement au démarrage de NVDA, et l’ancienne copie est supprimée une fois la nouvelle vérifiée. Si une valeur du fichier n’a pas le bon type, uTalk la remplace par la valeur par défaut.</p>
+</div>
 </div>
 
 <br><br>
 <h2>Me soutenir</h2>
-    <p>Si cet outil vous a simplifié la vie, envisagez de soutenir la prochaine mise à jour avec un petit don.</p>
+    <p>Si cet outil vous a facilité la vie, envisagez de soutenir la prochaine mise à jour avec un petit don.</p>
 <br>
 <p>
   <a href="https://buy.stripe.com/dRm9AU1xQ3Ds22N6VK1VK01">
-    <img src="https://img.shields.io/badge/Donate-Support%20Me-blue?style=for-the-badge&logo=stripe" alt="Support me">
+    <img src="https://img.shields.io/badge/Donate-Support%20Me-blue?style=for-the-badge&logo=stripe" alt="Me soutenir">
   </a>
 </p>
 <br>
 <p>Votre soutien compte énormément. Construisons ensemble quelque chose de formidable</p>
 <br>
   <div class="footer-note">
-<p>&copy; 2026 Module complémentaire NVDA Chai Chaimee publié sous licence GNU GPL</p>
+<p>&copy; 2026 Chai Chaimee Extension NVDA Publiée sous licence GNU GPL</p>
 </div>
 
 </div> <!-- End container -->

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: uTalk 2026.9.9\n"
+"Project-Id-Version: uTalk 2026.12.0\n"
 "Report-Msgid-Bugs-To: chaicm75@gmail.com\n"
-"POT-Creation-Date: 2026-09-08 12:19+0700\n"
+"POT-Creation-Date: 2026-11-27 15:42+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: chaiBot and Malee Yamazaki\n"
 "Language-Team: Portuguese (Brazil)\n"
@@ -10,61 +10,185 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: DevOn Addon\n"
+"X-Generator: ChaiBot Addon\n"
 
-#: uTalkCore.py:31
+#: settingsPanel.py:84
+msgid "&Application rules (one per line: name=off, name=main or name=alt):"
+msgstr "Regras do &aplicativo (uma por linha: name=off, name=main ou name=alt):"
+
+#: uTalkCore.py:62
 msgid "...truncated"
 msgstr "...truncado"
 
-#: settingsPanel.py:33
+#: uTalkCore.py:483
+msgid "Alternate language"
+msgstr "Idioma alternativo"
+
+#: settingsPanel.py:57
 msgid "Alternate language code:"
 msgstr "Código de idioma alternativo:"
 
-#: settingsPanel.py:50
+#: uTalkCore.py:505
+msgid "Alternate language is not set. Press the shortcut twice to open the uTalk settings and add phrases."
+msgstr "O idioma alternativo não está definido. Pressione o atalho duas vezes para abrir as configurações do uTalk e adicionar frases."
+
+#: settingsPanel.py:79
+msgid "Announce copy, cut and paste &only when they take effect"
+msgstr "Anunciar copiar, cortar e colar &apenas quando entrarem em vigor"
+
+#: settingsPanel.py:72
+msgid "Announcement &detail:"
+msgstr "&Detalhe do anúncio:"
+
+#: settingsPanel.py:64
+msgid "Announcement &output:"
+msgstr "&Saída do anúncio:"
+
+#: settingsPanel.py:19
+msgid "Beep only"
+msgstr "Apenas bipe"
+
+#: settingsPanel.py:18
+msgid "Braille only"
+msgstr "Apenas braille"
+
+#: uTalkCore.py:466
+msgid "Cannot detect the current application"
+msgstr "Não foi possível detectar o aplicativo atual"
+
+#: settingsPanel.py:103
 msgid "Command translations:"
 msgstr "Traduções de comandos:"
 
-#: settingsPanel.py:39
+#: settingsPanel.py:92
 msgid "Copy"
 msgstr "Copiar"
 
-#: settingsPanel.py:41
+#: settingsPanel.py:94
 msgid "Copy file"
 msgstr "Copiar arquivo"
 
-#: settingsPanel.py:40
+#: settingsPanel.py:93
 msgid "Copy path"
 msgstr "Copiar caminho"
 
-#: settingsPanel.py:42
+#: uTalkCore.py:477
+msgid "Could not save the application rule"
+msgstr "Não foi possível salvar a regra do aplicativo"
+
+#: settingsPanel.py:95
 msgid "Cut"
 msgstr "Recortar"
 
-#: settingsPanel.py:43
+#: settingsPanel.py:26
+msgid "Detailed (adds counts and what undo or redo changed)"
+msgstr "Detalhado (adiciona contagens e o que desfazer ou refazer alterou)"
+
+#: uTalkCore.py:484
+msgid "English"
+msgstr "Inglês"
+
+#: settingsPanel.py:130
+msgid "Invalid configuration"
+msgstr "Configuração inválida"
+
+#: settingsPanel.py:148
+msgid "Line {line} of the application rules is not valid. Use name=off, name=main or name=alt."
+msgstr "A linha {line} das regras do aplicativo não é válida. Use name=off, name=main ou name=alt."
+
+#: uTalkCore.py:449
+msgid "Mute or unmute uTalk announcements"
+msgstr "Silenciar ou reativar anúncios do uTalk"
+
+#: uTalkCore.py:93
+msgid "Nothing to copy"
+msgstr "Nada para copiar"
+
+#: uTalkCore.py:92
+msgid "Nothing to cut"
+msgstr "Nada para cortar"
+
+#: settingsPanel.py:96
 msgid "Paste"
 msgstr "Colar"
 
-#: settingsPanel.py:44
+#: settingsPanel.py:97
 msgid "Redo"
 msgstr "Refazer"
 
-#: settingsPanel.py:60
+#: settingsPanel.py:115
 msgid "Restore Defaults"
 msgstr "Restaurar padrões"
 
-#: settingsPanel.py:45
+#: settingsPanel.py:98
 msgid "Save"
 msgstr "Salvar"
 
-#: settingsPanel.py:46
+#: settingsPanel.py:99
 msgid "Select all"
 msgstr "Selecionar tudo"
 
-#: settingsPanel.py:47
+#: settingsPanel.py:25
+msgid "Short"
+msgstr "Curto"
+
+#: settingsPanel.py:16
+msgid "Speech and braille"
+msgstr "Fala e braille"
+
+#: settingsPanel.py:17
+msgid "Speech only"
+msgstr "Apenas fala"
+
+#: settingsPanel.py:134
+msgid "The text is longer than {limit} characters. Shorten it before saving."
+msgstr "O texto é mais longo do que {limit} caracteres. Encurte-o antes de salvar."
+
+#: uTalkCore.py:459
+msgid "Turn uTalk off or on for the current application"
+msgstr "Desativar ou ativar o uTalk para o aplicativo atual"
+
+#: settingsPanel.py:100
 msgid "Undo"
 msgstr "Desfazer"
 
-#: settingsPanel.py:14
-#: uTalkCore.py:36
+#: uTalkCore.py:134
+msgid "added {text}"
+msgstr "adicionado {text}"
+
+#: uTalkCore.py:132
+msgid "removed {text}"
+msgstr "removido {text}"
+
+#: uTalkCore.py:127
+msgid "replaced {removed} with {added}"
+msgstr "substituído {removed} por {added}"
+
+#: settingsPanel.py:38
+#: uTalkCore.py:139
 msgid "uTalk"
 msgstr "uTalk"
+
+#: uTalkCore.py:436
+msgid "uTalk multi tap. Once: swap languages. Twice: open settings. Three times: turn uTalk off or on for the current application. Four times: mute or unmute uTalk announcements"
+msgstr "Toque múltiplo do uTalk. Uma vez: alternar idiomas. Duas vezes: abrir configurações. Três vezes: desativar ou ativar o uTalk para o aplicativo atual. Quatro vezes: siluenciar ou dessiluenciar os anúncios do uTalk"
+
+#: uTalkCore.py:457
+msgid "uTalk muted"
+msgstr "uTalk silenciado"
+
+#: uTalkCore.py:474
+msgid "uTalk off for {appName}"
+msgstr "uTalk desativado para {appName}"
+
+#: uTalkCore.py:471
+msgid "uTalk on for {appName}"
+msgstr "uTalk ativado para {appName}"
+
+#: uTalkCore.py:457
+msgid "uTalk unmuted"
+msgstr "uTalk dessiluenciado"
+
+#: uTalkCore.py:109
+msgid "whitespace"
+msgstr "espaço em branco"
